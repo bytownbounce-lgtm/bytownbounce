@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You! | Bytown Bounce</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+body { margin:0; font-family:'Poppins',sans-serif; background:linear-gradient(135deg,#FF5CE1E6,#FF5E84); color:white; text-align:center; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px; }
+.card { background:white; color:#333; padding:50px 30px; border-radius:30px; box-shadow:0 20px 40px rgba(0,0,0,0.2); max-width:500px; width:100%; }
+h1 { font-family:'Fredoka One', cursive; font-size:3rem; color:#FF5E84; margin:0 0 20px; }
+.emoji { font-size:5rem; margin-bottom:20px; animation:bounce 2s infinite; }
+.detail { background:#f0f8ff; padding:15px; border-radius:15px; margin:15px 0; font-size:1.3rem; color:#333; }
+.highlight { font-weight:bold; color:#FF5E84; }
+.btn { background:#FFED4E; color:#333; padding:16px 32px; font-size:1.4rem; font-weight:bold; border:none; border-radius:50px; text-decoration:none; display:inline-block; margin-top:30px; box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+</style>
+</head>
+<body>
+<div class="card">
+<div class="emoji">Thank you! Thank you!</div>
+<h1>Booking Received!</h1>
+<p>We’re jumping with excitement — here’s what you booked:</p>
+
+<div class="detail">
+<strong>Date:</strong> <span id="date" class="highlight">—</span>
+</div>
+<div class="detail">
+<strong>Castle:</strong> <span id="castle" class="highlight">—</span>
+</div>
+<div class="detail">
+<strong>Name:</strong> <span id="name" class="highlight">—</span>
+</div>
+
+<p>We reply in under 10 minutes (usually under 2) — check your phone/email shortly!</p>
+<p>Questions right now? Text us at <strong>(613) 555-JUMP</strong></p>
+
+<a href="https://bytownbounce.ca" class="btn">← Back to Home</a>
+</div>
+
+<script>
+// Grab the data from the URL that Formspree sends after submission
+const params = new URLSearchParams(window.location.search);
+
+document.getElementById('name').textContent = params.get('name') || 'Valued Customer';
+document.getElementById('date').textContent = params.get('date') ? new Date(params.get('date')).toLocaleDateString('en-CA', { weekday:'long', year:'numeric', month:'long', day:'numeric' }) : '—';
+document.getElementById('castle').textContent = params.get('castle') || 'Your chosen castle';
+
+// Fallback if someone lands here directly
+if (!params.get('name') && !params.get('date')) {
+document.querySelector('p').innerHTML = "Looks like you bounced straight here!<br>Go back and submit the form to see the magic ✨";
+}
+</script>
+</body>
+</html>

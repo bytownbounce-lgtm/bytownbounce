@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bytown Bounce | Bouncy Castles & Party Rentals Ottawa</title>
+<meta name="description" content="TSSA-certified bouncy castles, concessions, tables & packages delivered in Ottawa. Book + pay deposit in 60 seconds!">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+<style>
+:root{--pink:#FF5E84;--blue:#5CE1E6;--yellow:#FFED4E;--purple:#C77DFF}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:#f9fdff;color:#333;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:'Fredoka One',cursive}
+.hero{background:linear-gradient(135deg,var(--pink),var(--blue));color:white;text-align:center;padding:140px 20px 60px;position:relative}
+.hero h1{font-size:3rem;margin:10px 0}
+.badge{background:var(--yellow);color:#333;padding:8px 18px;border-radius:50px;font-weight:bold;display:inline-block;margin:10px}
+.bouncy-btn{background:var(--yellow);color:#333;padding:16px 32px;font-size:1.4rem;font-weight:bold;border:none;border-radius:50px;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.2);transition:.2s}
+.bouncy-btn:hover{transform:scale(1.05)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;padding:40px 20px;max-width:1300px;margin:0 auto}
+.card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 12px 35px rgba(0,0,0,.12);text-align:center;transition:.3s}
+.card:hover{transform:translateY(-12px);box-shadow:0 20px 40px rgba(0,0,0,.2)}
+.card img{width:100%;height:260px;object-fit:cover}
+.price{font-size:2.4rem;color:var(--pink);font-weight:bold;margin:12px 0}
+.gallery-thumbs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:15px 0}
+.gallery-thumbs a{width:85px;height:85px;border-radius:12px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.2);transition:.2s}
+.gallery-thumbs a:hover{transform:scale(1.08)}
+.gallery-thumbs img,.gallery-thumbs video{width:100%;height:100%;object-fit:cover}
+.booking{background:var(--purple);color:white;text-align:center;padding:90px 20px}
+.legal{font-size:0.9rem;max-width:800px;margin:30px auto;opacity:0.9;line-height:1.5}
+footer{background:#333;color:#fff;text-align:center;padding:60px 20px}
+</style>
+</head>
+<body>
+
+<!-- LOGO -->
+<section class="hero">
+<div style="position:absolute;top:15px;left:50%;transform:translateX(-50%);z-index:10;width:100%;text-align:center;pointer-events:none">
+<a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+<img src="https://bytownbounce.ca/logo.png" alt="Bytown Bounce" style="height:120px;max-width:90%;pointer-events:auto;border:none">
+</a>
+</div>
+<h1>Bytown Bounce</h1>
+<p>Clean, safe & super-fun bouncy castles + full party rentals delivered to your Ottawa backyard!</p>
+<div class="badge">TSSA Certified • Free Delivery • Rain-or-Shine Guarantee</div>
+<button class="bouncy-btn" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book Now</button>
+</section>
+
+<!-- BOUNCY CASTLES – 6 PHOTOS EACH -->
+<section class="gallery">
+<!-- Classic Rainbow Castle -->
+<div class="card">
+<a href="https://bytownbounce.ca/images/classic-1.jpg" data-lightbox="classic"><img src="https://bytownbounce.ca/images/classic-1.jpg" alt="Classic Castle"></a>
+<div style="padding:20px">
+<h3>Classic Rainbow Castle</h3><p>13×13 · Up to 10 kids</p><p class="price">$199/day</p>
+<div class="gallery-thumbs">
+<a href="https://bytownbounce.ca/images/classic-1.jpg" data-lightbox="classic"><img src="https://bytownbounce.ca/images/classic-1.jpg"></a>
+<a href="https://bytownbounce.ca/images/classic-2.jpg" data-lightbox="classic"><img src="https://bytownbounce.ca/images/classic-2.jpg"></a>
+<a href="https://bytownbounce.ca/images/classic-3.jpg" data-lightbox="classic"><img src="https://bytownbounce.ca/images/classic-3.jpg"></a>
+<a href="https://bytownbounce.ca/images/classic-4.jpg" data-lightbox="classic"><img src="https://bytownbounce.ca/images/classic-4.jpg"></a>
+<a href="https://bytownbounce.ca/images/classic-5.jpg" data-lightbox="classic"><img src="https://bytownbounce.ca/images/classic-5.jpg"></a>
+<a href="https://bytownbounce.ca/images/classic-6.jpg" data-lightbox="classic"><img src="https://bytownbounce.ca/images/classic-6.jpg"></a>
+</div>
+<button class="bouncy-btn" onclick="addToCart('Classic Rainbow Castle – $199',199)">Add to Cart</button>
+</div>
+</div>
+
+<!-- Mega Slide Combo -->
+<div class="card">
+<a href="https://bytownbounce.ca/images/mega-1.jpg" data-lightbox="mega"><img src="https://bytownbounce.ca/images/mega-1.jpg" alt="Mega Slide"></a>
+<div style="padding:20px">
+<h3>Mega Slide Combo</h3><p>15×20 · Slide + Hoop</p><p class="price">$299/day</p>
+<div class="gallery-thumbs">
+<a href="https://bytownbounce.ca/images/mega-1.jpg" data-lightbox="mega"><img src="https://bytownbounce.ca/images/mega-1.jpg"></a>
+<a href="https://bytownbounce.ca/images/mega-2.jpg" data-lightbox="mega"><img src="https://bytownbounce.ca/images/mega-2.jpg"></a>
+<a href="https://bytownbounce.ca/images/mega-3.jpg" data-lightbox="mega"><img src="https://bytownbounce.ca/images/mega-3.jpg"></a>
+<a href="https://bytownbounce.ca/images/mega-4.jpg" data-lightbox="mega"><img src="https://bytownbounce.ca/images/mega-4.jpg"></a>
+<a href="https://bytownbounce.ca/images/mega-5.jpg" data-lightbox="mega"><img src="https://bytownbounce.ca/images/mega-5.jpg"></a>
+<a href="https://bytownbounce.ca/images/mega-6.jpg" data-lightbox="mega"><img src="https://bytownbounce.ca/images/mega-6.jpg"></a>
+</div>
+<button class="bouncy-btn" onclick="addToCart('Mega Slide Combo – $299',299)">Add to Cart</button>
+</div>
+</div>
+
+<!-- Toddler Zone -->
+<div class="card">
+<a href="https://bytownbounce.ca/images/toddler-1.jpg" data-lightbox="toddler"><img src="https://bytownbounce.ca/images/toddler-1.jpg" alt="Toddler Zone"></a>
+<div style="padding:20px">
+<h3>Toddler Soft Play Zone</h3><p>Ages 1–4</p><p class="price">$179/day</p>
+<div class="gallery-thumbs">
+<a href="https://bytownbounce.ca/images/toddler-1.jpg" data-lightbox="toddler"><img src="https://bytownbounce.ca/images/toddler-1.jpg"></a>
+<a href="https://bytownbounce.ca/images/toddler-2.jpg" data-lightbox="toddler"><img src="https://bytownbounce.ca/images/toddler-2.jpg"></a>
+<a href="https://bytownbounce.ca/images/toddler-3.jpg" data-lightbox="toddler"><img src="https://bytownbounce.ca/images/toddler-3.jpg"></a>
+<a href="https://bytownbounce.ca/images/toddler-4.jpg" data-lightbox="toddler"><img src="https://bytownbounce.ca/images/toddler-4.jpg"></a>
+<a href="https://bytownbounce.ca/images/toddler-5.jpg" data-lightbox="toddler"><img src="https://bytownbounce.ca/images/toddler-5.jpg"></a>
+<a href="https://bytownbounce.ca/images/toddler-6.jpg" data-lightbox="toddler"><img src="https://bytownbounce.ca/images/toddler-6.jpg"></a>
+</div>
+<button class="bouncy-btn" onclick="addToCart('Toddler Zone – $179',179)">Add to Cart</button>
+</div>
+</div>
+</section>
+
+<!-- CONCESSION RENTALS – 6 PHOTOS EACH -->
+<section style="padding:80px 20px;background:#fff9f9;text-align:center">
+<h2 style="font-size:2.8rem;color:#FF5E84">Concession Rentals</h2>
+<div class="gallery">
+<!-- Snow Cone -->
+<div class="card">
+<a href="https://bytownbounce.ca/images/snowcone-1.jpg" data-lightbox="snowcone"><img src="https://bytownbounce.ca/images/snowcone-1.jpg" alt="Snow Cone"></a>
+<div style="padding:20px"><h3>Snow Cone Machine</h3><p>50 servings + syrup</p><p class="price">$99</p>
+<div class="gallery-thumbs">
+<a href="https://bytownbounce.ca/images/snowcone-1.jpg" data-lightbox="snowcone"><img src="https://bytownbounce.ca/images/snowcone-1.jpg"></a>
+<a href="https://bytownbounce.ca/images/snowcone-2.jpg" data-lightbox="snowcone"><img src="https://bytownbounce.ca/images/snowcone-2.jpg"></a>
+<a href="https://bytownbounce.ca/images/snowcone-3.jpg" data-lightbox="snowcone"><img src="https://bytownbounce.ca/images/snowcone-3.jpg"></a>
+<a href="https://bytownbounce.ca/images/snowcone-4.jpg" data-lightbox="snowcone"><img src="https://bytownbounce.ca/images/snowcone-4.jpg"></a>
+<a href="https://bytownbounce.ca/images/snowcone-5.jpg" data-lightbox="snowcone"><img src="https://bytownbounce.ca/images/snowcone-5.jpg"></a>
+<a href="https://bytownbounce.ca/images/snowcone-6.jpg" data-lightbox="snowcone"><img src="https://bytownbounce.ca/images/snowcone-6.jpg"></a>
+</div>
+<button class="bouncy-btn" onclick="addToCart('Snow Cone Machine',99)">Add to Cart</button>
+</div>
+</div>
+
+<!-- Popcorn -->
+<div class="card">
+<a href="https://bytownbounce.ca/images/popcorn-1.jpg" data-lightbox="popcorn"><img src="https://bytownbounce.ca/images/popcorn-1.jpg" alt="Popcorn"></a>
+<div style="padding:20px"><h3>Popcorn Machine</h3><p>100 servings</p><p class="price">$89</p>
+<div class="gallery-thumbs">
+<a href="https://bytownbounce.ca/images/popcorn-1.jpg" data-lightbox="popcorn"><img src="https://bytownbounce.ca/images/popcorn-1.jpg"></a>
+<a href="https://bytownbounce.ca/images/popcorn-2.jpg" data-lightbox="popcorn"><img src="https://bytownbounce.ca/images/popcorn-2.jpg"></a>
+<a href="https://bytownbounce.ca/images/popcorn-3.jpg" data-lightbox="popcorn"><img src="https://bytownbounce.ca/images/popcorn-3.jpg"></a>
+<a href="https://bytownbounce.ca/images/popcorn-4.jpg" data-lightbox="popcorn"><img src="https://bytownbounce.ca/images/popcorn-4.jpg"></a>
+<a href="https://bytownbounce.ca/images/popcorn-5.jpg" data-lightbox="popcorn"><img src="https://bytownbounce.ca/images/popcorn-5.jpg"></a>
+<a href="https://bytownbounce.ca/images/popcorn-6.jpg" data-lightbox="popcorn"><img src="https://bytownbounce.ca/images/popcorn-6.jpg"></a>
+</div>
+<button class="bouncy-btn" onclick="addToCart('Popcorn Machine',89)">Add to Cart</button>
+</div>
+</div>
+
+<!-- Cotton Candy -->
+<div class="card">
+<a href="https://bytownbounce.ca/images/cottoncandy-1.jpg" data-lightbox="cotton"><img src="https://bytownbounce.ca/images/cottoncandy-1.jpg" alt="Cotton Candy"></a>
+<div style="padding:20px"><h3>Cotton Candy Machine</h3><p>70 servings</p><p class="price">$109</p>
+<div class="gallery-thumbs">
+<a href="https://bytownbounce.ca/images/cottoncandy-1.jpg" data-lightbox="cotton"><img src="https://bytownbounce.ca/images/cottoncandy-1.jpg"></a>
+<a href="https://bytownbounce.ca/images/cottoncandy-2.jpg" data-lightbox="cotton"><img src="https://bytownbounce.ca/images/cottoncandy-2.jpg"></a>
+<a href="https://bytownbounce.ca/images/cottoncandy-3.jpg" data-lightbox="cotton"><img src="https://bytownbounce.ca/images/cottoncandy-3.jpg"></a>
+<a href="https://bytownbounce.ca/images/cottoncandy-4.jpg" data-lightbox="cotton"><img src="https://bytownbounce.ca/images/cottoncandy-4.jpg"></a>
+<a href="https://bytownbounce.ca/images/cottoncandy-5.jpg" data-lightbox="cotton"><img src="https://bytownbounce.ca/images/cottoncandy-5.jpg"></a>
+<a href="https://bytownbounce.ca/images/cottoncandy-6.jpg" data-lightbox="cotton"><img src="https://bytownbounce.ca/images/cottoncandy-6.jpg"></a>
+</div>
+<button class="bouncy-btn" onclick="addToCart('Cotton Candy Machine',109)">Add to Cart</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TABLES & CHAIRS – 6 PHOTOS EACH -->
+<section style="padding:80px 20px;background:#f8f8ff;text-align:center">
+<h2 style="font-size:2.8rem;color:#5CE1E6">Tables & Chairs</h2>
+<div class="gallery">
+<!-- Table -->
+<div class="card">
+<a href="https://bytownbounce.ca/images/table-1.jpg" data-lightbox="table"><img src="https://bytownbounce.ca/images/table-1.jpg" alt="Table"></a>
+<div style="padding:20px"><h3>6-ft Folding Table</h3><p class="price">$12 each</p>
+<div class="gallery-thumbs">
+<a href="https://bytownbounce.ca/images/table-1.jpg" data-lightbox="table"><img src="https://bytownbounce.ca/images/table-1.jpg"></a>
+<a href="https://bytownbounce.ca/images/table-2.jpg" data-lightbox="table"><img src="https://bytownbounce.ca/images/table-2.jpg"></a>
+<a href="https://bytownbounce.ca/images/table-3.jpg" data-lightbox="table"><img src="https://bytownbounce.ca/images/table-3.jpg"></a>
+<a href="https://bytownbounce.ca/images/table-4.jpg" data-lightbox="table"><img src="https://bytownbounce.ca/images/table-4.jpg"></a>
+<a href="https://bytownbounce.ca/images/table-5.jpg" data-lightbox="table"><img src="https://bytownbounce.ca/images/table-5.jpg"></a>
+<a href="https://bytownbounce.ca/images/table-6.jpg" data-lightbox="table"><img src="https://bytownbounce.ca/images/table-6.jpg"></a>
+</div>
+<button class="bouncy-btn" onclick="addToCart('6-ft Folding Table',12)">Add Table</button>
+</div>
+</div>
+
+<!-- Kids Chairs -->
+<div class="card">
+<a href="https://bytownbounce.ca/images/kidschair-1.jpg" data-lightbox="kidschair"><img src="https://bytownbounce.ca/images/kidschair-1.jpg" alt="Kids Chairs"></a>
+<div style="padding:20px"><h3>Kids White Chairs</h3><p class="price">$2.50 each</p>
+<div class="gallery-thumbs">
+<a href="https://bytownbounce.ca/images/kidschair-1.jpg" data-lightbox="kidschair"><img src="https://bytownbounce.ca/images/kidschair-1.jpg"></a>
+<a href="https://bytownbounce.ca/images/kidschair-2.jpg" data-lightbox="kidschair"><img src="https://bytownbounce.ca/images/kidschair-2.jpg"></a>
+<a href="https://bytownbounce.ca/images/kidschair-3.jpg" data-lightbox="kidschair"><img src="https://bytownbounce.ca/images/kidschair-3.jpg"></a>
+<a href="https://bytownbounce.ca/images/kidschair-4.jpg" data-lightbox="kidschair"><img src="https://bytownbounce.ca/images/kidschair-4.jpg"></a>
+<a href="https://bytownbounce.ca/images/kidschair-5.jpg" data-lightbox="kidschair"><img src="https://bytownbounce.ca/images/kidschair-5.jpg"></a>
+<a href="https://bytownbounce.ca/images/kidschair-6.jpg" data-lightbox="kidschair"><img src="https://bytownbounce.ca/images/kidschair-6.jpg"></a>
+</div>
+<button class="bouncy-btn" onclick="addToCart('Kids White Chairs',2.5)">Add Chair</button>
+</div>
+</div>
+
+<!-- Adult Chairs -->
+<div class="card">
+<a href="https://bytownbounce.ca/images/adultchair-1.jpg" data-lightbox="adultchair"><img src="https://bytownbounce.ca/images/adultchair-1.jpg" alt="Adult Chairs"></a>
+<div style="padding:20px"><h3>Adult White Chairs</h3><p class="price">$3 each</p>
+<div class="gallery-thumbs">
+<a href="https://bytownbounce.ca/images/adultchair-1.jpg" data-lightbox="adultchair"><img src="https://bytownbounce.ca/images/adultchair-1.jpg"></a>
+<a href="https://bytownbounce.ca/images/adultchair-2.jpg" data-lightbox="adultchair"><img src="https://bytownbounce.ca/images/adultchair-2.jpg"></a>
+<a href="https://bytownbounce.ca/images/adultchair-3.jpg" data-lightbox="adultchair"><img src="https://bytownbounce.ca/images/adultchair-3.jpg"></a>
+<a href="https://bytownbounce.ca/images/adultchair-4.jpg" data-lightbox="adultchair"><img src="https://bytownbounce.ca/images/adultchair-4.jpg"></a>
+<a href="https://bytownbounce.ca/images/adultchair-5.jpg" data-lightbox="adultchair"><img src="https://bytownbounce.ca/images/adultchair-5.jpg"></a>
+<a href="https://bytownbounce.ca/images/adultchair-6.jpg" data-lightbox="adultchair"><img src="https://bytownbounce.ca/images/adultchair-6.jpg"></a>
+</div>
+<button class="bouncy-btn" onclick="addToCart('Adult White Chairs',3)">Add Chair</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PARTY PACKAGES (no photos needed here, but you can add if you want) -->
+<section style="padding:100px 20px;background:linear-gradient(135deg,#C77DFF,#FF5E84);color:white;text-align:center">
+<h2 style="font-size:3rem">Party Packages – Save Big!</h2>
+<div class="gallery">
+<div class="card" style="background:white;color:#333"><h3>Basic Bounce Package</h3><ul style="text-align:left"><li>Any bounce house</li><li>6 kids chairs + 1 table</li><li>Giant LED sign</li></ul><p class="price">$289</p><button class="bouncy-btn" onclick="addToCart('Basic Bounce Package',289)">Add Package</button></div>
+<div class="card" style="background:white;color:#333;transform:scale(1.05)"><div style="background:#FF5E84;color:white;padding:8px;font-weight:bold">MOST POPULAR</div><h3>Ultimate Party Package</h3><ul style="text-align:left"><li>Mega Slide Combo</li><li>Snow cone OR cotton candy</li><li>10 kids chairs + 2 tables</li><li>LED sign + bubbles</li></ul><p class="price">$449</p><button class="bouncy-btn" onclick="addToCart('Ultimate Party Package',449)">Add Package</button></div>
+<div class="card" style="background:white;color:#333"><h3>Toddler Dream Package</h3><ul style="text-align:left"><li>Toddler Zone</li><li>6 toddler chairs + table</li><li>Popcorn machine</li></ul><p class="price">$329</p><button class="bouncy-btn" onclick="addToCart('Toddler Dream Package',329)">Add Package</button></div>
+</div>
+</section>
+
+<!-- CALENDLY -->
+<section style="padding:80px 20px;background:#f0f8ff;text-align:center">
+<h2 style="font-size:2.8rem;color:#5CE1E6">Pick Your Date – Live Availability</h2>
+<div class="calendly-inline-widget" data-url="https://calendly.com/bytownbounce/30min" style="min-width:320px;height:720px;"></div>
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</section>
+
+<!-- BOOKING + CART + STRIPE + LEGAL -->
+<section class="booking" id="booking">
+<h2 style="font-size:2.8rem">Ready to Lock It In?</h2>
+
+<div id="cart-summary" style="background:#fff;color:#333;padding:25px;border-radius:15px;margin:30px auto;max-width:600px;display:none;box-shadow:0 15px 35px rgba(0,0,0,.15)">
+<h3 style="color:#FF5E84">Your Cart</h3>
+<div id="cart-items"></div>
+<p><strong>Total Estimate: <span id="cart-total">$0</span></strong></p>
+<button onclick="clearCart()" style="background:#ff4444;color:white;padding:10px 20px;border:none;border-radius:10px">Clear Cart</button>
+<button id="pay-deposit" class="bouncy-btn" style="background:#28a745;margin-left:15px">Pay $50 Deposit Now</button>
+</div>
+
+<form id="booking-form" action="https://formspree.io/f/mdkqplpb" method="POST">
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="tel" name="phone" placeholder="Phone Number" required>
+<input type="email" name="email" placeholder="Email">
+<input type="date" name="date" required>
+<input type="hidden" name="cart" id="cart-data">
+<textarea name="message" rows="4" placeholder="Postcode + any notes" required></textarea>
+<div class="legal">
+By submitting you agree:<br>
+• $50 deposit is non-refundable but transferable if rescheduled 48+ hours in advance.<br>
+• Remaining balance due on delivery day (cash or e-transfer).<br>
+• All units are TSSA-certified and we carry $5M liability insurance.
+</div>
+<button type="submit" class="bouncy-btn" style="width:100%;padding:20px;font-size:1.6rem">Send Booking Request</button>
+</form>
+</section>
+
+<!-- LIGHTBOX + CART + STRIPE -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+const stripe = Stripe('pk_test_XXXXXXXXXXXXXXXXXXXXXXXX'); // ← replace with your key
+
+let cart = [];
+let prices = {
+"Classic Rainbow Castle – $199":199, "Mega Slide Combo – $299":299, "Toddler Zone – $179":179,
+"Snow Cone Machine":99, "Popcorn Machine":89, "Cotton Candy Machine":109,
+"6-ft Folding Table":12, "Kids White Chairs":2.5, "Adult White Chairs":3,
+"Basic Bounce Package":289, "Ultimate Party Package":449, "Toddler Dream Package":329
+};
+
+function addToCart(item,price){
+cart.push(item);
+updateCart();
+document.getElementById('booking').scrollIntoView({behavior:'smooth'});
+}
+function updateCart(){
+const s=document.getElementById("cart-summary");
+const items=document.getElementById("cart-items");
+const total=document.getElementById("cart-total");
+if(cart.length===0){s.style.display="none";return}
+s.style.display="block";
+items.innerHTML=cart.map(i=>`• ${i}`).join("<br>");
+const sum=cart.reduce((a,c)=>a+(prices[c]||0),0);
+total.textContent="$"+sum;
+document.getElementById("cart-data").value=cart.join(" + ");
+}
+function clearCart(){cart=[];updateCart();}
+
+document.getElementById('pay-deposit').addEventListener('click',async()=>{
+const total=document.getElementById('cart-total').textContent.slice(1);
+const res=await fetch('/.netlify/functions/create-checkout-session',{
+method:'POST',headers:{'Content-Type':'application/json'},
+body:JSON.stringify({cartTotal:total,cartItems:cart})
+});
+const {sessionId}=await res.json();
+stripe.redirectToCheckout({sessionId});
+});
+</script>
+
+<footer>
+<p style="font-size:1.6rem">Bytown Bounce</p>
+<p>Call/Text: (343) 322 7010 • bytownbounce@gmail.com</p>
+<p>© 2025 Bytown Bounce – Ottawa’s favourite party people!</p>
+</footer>
+</body>
+</html>
