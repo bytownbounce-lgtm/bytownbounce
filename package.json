@@ -1,0 +1,8 @@
+{
+  "name": "bytownbounce",
+  "version": "1.0.0",
+  "description": "Bytown Bounce party rentals site",
+  "dependencies": {
+    "stripe": "^16.5.0"
+  }
+}
