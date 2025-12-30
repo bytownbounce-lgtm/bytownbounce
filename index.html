@@ -373,41 +373,69 @@ By submitting you agree:<br>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 <script src="https://js.stripe.com/v3/"></script>
 <script>
-const stripe = Stripe(pk_live_51SdYwVFB9Y5lqPP0lTZzRYe6HJFBGjSAnwCOAsO1RsaMzXU22mS4n1A2YxX89g6OiuC37VEqeUOyxNO8EndZNPb000uffmwiJM);
+  const stripe = Stripe('pk_live_51SdYwVFB9Y5lqPP0lTZzRYe6HJFBGjSAnwCOAsO1RsaMzXU22mS4n1A2YxX89g6OiuC37VEqeUOyxNO8EndZNPb000uffmwiJM'); // your live key
 
-let cart = [];
-let prices = {
-"Classic Rainbow Castle – $199":199, "Mega Slide Combo – $299":299, "Toddler Zone – $179":179,
-"Snow Cone Machine":99, "Popcorn Machine":89, "Cotton Candy Machine":109,
-"6-ft Folding Table":12, "Table & Bench":20, "Party Tent":105,
-"Basic Bounce Package":289, "Ultimate Party Package":449, "Toddler Dream Package":329
-};
+  let cart = [];
+  let prices = {
+    "Classic Rainbow Castle – $199":199,
+    "Mega Slide Combo – $299":299,
+    "Toddler Zone – $179":179,
+    "Mega Obstacle Course – $449":449,
+    "Mega Water Slides – $399":399,
+    "White Castle – $349":349,
+    "Snow Cone Machine":99,
+    "Popcorn Machine":89,
+    "Cotton Candy Machine":109,
+    "6-ft Folding Table":12,
+    "Table & Bench":20,
+    "Party Tent":105,
+    "Basic Bounce Package":289,
+    "Ultimate Party Package":449,
+    "Toddler Dream Package":329
+  };
 
-function addToCart(item,price){
-cart.push(item);
-updateCart();
-document.getElementById('booking').scrollIntoView({behavior:'smooth'});
-}
-function updateCart(){
-const s=document.getElementById("cart-summary");
-const items=document.getElementById("cart-items");
-const total=document.getElementById("cart-total");
-if(cart.length===0){s.style.display="none";return}
-s.style.display="block";
-items.innerHTML=cart.map(i=>`• ${i}`).join("<br>");
-const sum=cart.reduce((a,c)=>a+(prices[c]||0),0);
-total.textContent="$"+sum;
-document.getElementById("cart-data").value=cart.join(" + ");
-}
-function clearCart(){cart=[];updateCart();}
+  function addToCart(item,price){
+    cart.push(item);
+    updateCart();
+    document.getElementById('booking').scrollIntoView({behavior:'smooth'});
+  }
 
-document.getElementById('pay-deposit').addEventListener('click',async()=>{
-const total=document.getElementById('cart-total').textContent.slice(1);
-const res=await fetch('/.netlify/functions/create-checkout-session',{
-method:'POST',headers:{'Content-Type':'application/json'},
-body:JSON.stringify({cartTotal:total,cartItems:cart})
-});
-const {sessionId}=await res.json();
-stripe.redirectToCheckout({sessionId});
-});
+  function updateCart(){
+    const s = document.getElementById("cart-summary");
+    const items = document.getElementById("cart-items");
+    const total = document.getElementById("cart-total");
+    if(cart.length === 0){
+      s.style.display = "none";
+      return;
+    }
+    s.style.display = "block";
+    items.innerHTML = cart.map(i => `• ${i}`).join("<br>");
+    const sum = cart.reduce((a,c) => a + (prices[c] || 0), 0);
+    total.textContent = "$" + sum;
+    document.getElementById("cart-data").value = cart.join(" + ");
+  }
+
+  function clearCart(){
+    cart = [];
+    updateCart();
+  }
+
+  document.getElementById('pay-deposit').addEventListener('click', async () => {
+    const total = document.getElementById('cart-total').textContent.slice(1);
+    const res = await fetch('/.netlify/functions/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cartTotal: total, cartItems: cart })
+    });
+    const { sessionId } = await res.json();
+    stripe.redirectToCheckout({ sessionId });
+  });
 </script>
+
+<footer>
+  <p style="font-size:1.6rem">Bytown Bounce</p>
+  <p>Call/Text: (343) 322 7010 • bytownbounce@gmail.com</p>
+  <p>© 2025 Bytown Bounce – Ottawa’s favourite party people!</p>
+</footer>
+</body>
+</html>
