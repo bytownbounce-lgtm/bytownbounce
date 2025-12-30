@@ -7,7 +7,7 @@ exports.handler = async (event) => {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [{
-  price: 'price_1SepjSFB9Y5lqPP0S3QrP1zQ',
+  price: 'price_1Sjy6lFB9Y5lqPP0FgOIE3NL',
   quantity: 1,
   description: `Deposit for rental (estimated total $${cartTotal || 'unknown'})`,
 }],
