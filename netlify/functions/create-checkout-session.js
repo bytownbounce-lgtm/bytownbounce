@@ -1,20 +1,6 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const api_key = process.env.STRIPE_SECRET_KEY;
 
 exports.handler = async (event) => {
-  console.log("=== ENVIRONMENT CHECK ===");
-  console.log("STRIPE_SECRET_KEY exists?", !!process.env.STRIPE_SECRET_KEY);
-  console.log(
-    "STRIPE_SECRET_KEY length:",
-    process.env.STRIPE_SECRET_KEY?.length
-  );
-  console.log(
-    "STRIPE_SECRET_KEY starts with:",
-    process.env.STRIPE_SECRET_KEY?.substring(0, 7)
-  );
-  console.log("========================");
-
-  console.log("Function called with method:", event.httpMethod);
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
