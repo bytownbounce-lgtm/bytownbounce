@@ -1,4 +1,6 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const api_key = process.env.STRIPE_SECRET_KEY;
+console.log("Using Stripe API Key:", api_key ? "Loaded" : "Not Loaded");
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
