@@ -11,9 +11,6 @@ exports.handler = async (event) => {
   try {
     const { cartTotal, cartItems } = JSON.parse(event.body);
 
-    // Convert cartTotal to cents (Stripe uses smallest currency unit)
-    const amountInCents = Math.round(parseFloat(cartTotal) * 100);
-
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [
