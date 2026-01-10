@@ -496,6 +496,30 @@
         bottom: 50px;
       }
 
+      .bg-bounce-house {
+        background-color: #fff9f9;
+      }
+      .bg-slide-combo {
+        background-color: #f0f8ff;
+      }
+      .bg-water-slide {
+        background-color: #fff9f9;
+      }
+      .bg-obstacle-course {
+        background-color: #f0f8ff;
+      }
+      .bg-toddler-zone {
+        background-color: #fff9f9;
+      }
+      .bg-inflammabe-arcade {
+        background-color: #f0fff0;
+      }
+      .bg-concessions-rentals {
+        background-color: #fff9f9;
+      }
+      .bg-party-rentals {
+        background-color: #f8f8ff;
+      }
       /* Improved Form Styling */
       #booking-form {
         max-width: 650px;
@@ -1473,6 +1497,28 @@
             "Party Packages – Save Big!",
           ];
 
+          const collectionBgClass = {
+            "Bounce House": "bg-bounce-house",
+            "Water Slides": "bg-water-slide",
+            "Slide Combos": "bg-slide-combo",
+            "Obstacle Course": "bg-obstacle-course",
+            "Toddler Soft Play Zone": "bg-toddler-zone",
+            "Inflatable Arcade Games": "bg-inflammabe-arcade",
+            "Concession Rentals": "bg-concessions-rentals",
+            "Party Rentals": "bg-party-rentals",
+          };
+
+          const collectionIds = {
+            "Bounce House": "bounce-house",
+            "Water Slides": "water-slides",
+            "Slide Combos": "slide-combos",
+            "Obstacle Course": "obstacle-course",
+            "Toddler Soft Play Zone": "toddler-zone",
+            "Inflatable Arcade Games": "arcade-games",
+            "Concession Rentals": "concessions",
+            "Party Rentals": "party-rentals",
+          };
+
           const orderedCollections = data
             .sort(
               (a, b) =>
@@ -1488,9 +1534,15 @@
           orderedCollections.forEach((collection) => {
             // 1️⃣ Create section for the collection
             const section = document.createElement("section");
+            section.id = collectionIds[collection.name];
+            section.classList.add(
+              collectionBgClass[collection.name] || "bg-default"
+            );
             section.id = collection.slug;
             section.style.padding = "80px 20px";
-            section.style.background = "#fff9f9";
+
+            console.log("Ids", collectionIds[collection.name]);
+            // section.style.background = "#fff9f9";
 
             // Collection title
             const title = document.createElement("h2");
