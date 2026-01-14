@@ -186,12 +186,6 @@
         .dropdown-content.active {
           display: block;
         }
-        .dropdown:hover .dropdown-content {
-          display: none;
-        } /* Disable hover on mobile */
-        .dropdown.active:hover .dropdown-content {
-          display: block;
-        }
       }
 
       /* Hero */
@@ -562,6 +556,55 @@
         grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
         gap: 8px;
       }
+
+      /* .booqable-product-button {
+        width: 100%;
+      } */
+      /* .booqable-product-button button, */
+      .booqable-product-button a,
+      .booqable-product-button button {
+        display: none;
+      }
+      .booqable-product-button * {
+        visibility: hidden;
+      }
+
+      /* Show only spans */
+      .booqable-product-button span > button > span {
+        visibility: visible;
+        background: var(--yellow);
+        color: #333;
+        margin-top: -50px;
+        padding: 16px 32px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        transition: 0.2s;
+        font-family: "Poppins", sans-serif;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .booqable-product-button span > button > span > * {
+        color: #333;
+      }
+
+      .booqable-product-button {
+        position: relative;
+      }
+
+      .loading {
+        text-align: center;
+        padding: 40px;
+        font-size: 18px;
+        color: #666;
+      }
     </style>
   </head>
   <body>
@@ -660,9 +703,11 @@
     </section>
 
     <section>
+      <div id="loading" class="loading">Loading products ...</div>
       <div id="catalog"></div>
       <!-- <div class="gallery booqable-product-list"></div> -->
     </section>
+
     <!-- BOUNCE HOUSE -->
     <!-- <section id="bounce-house" style="padding: 80px 20px; background: #fff9f9">
       <h2 class="section-title">Bounce House</h2>
@@ -1271,7 +1316,10 @@
             Add Package
           </button>
         </div>
-        <div class="card" style="background: white; color: #333">
+        <div
+          class="card"
+          style="background: white; color: #333; padding: 40px 20px"
+        >
           <h3>Toddler Dream Package</h3>
           <ul style="text-align: left">
             <li>Toddler Zone</li>
@@ -1462,7 +1510,10 @@
 
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://cdn.booqable.com/v2/booqable.js"></script>
-    <script src="https://32ce5d40-3202-43c9-8e05-728c01a273ea.assets.booqable.com/v2/booqable.js"></script>
+    <script
+      src="https://32ce5d40-3202-43c9-8e05-728c01a273ea.assets.booqable.com/v2/booqable.js"
+      defer
+    ></script>
     <script>
       // Stripe Key
       const stripe = Stripe(
@@ -1472,9 +1523,12 @@
       async function loadProducts() {
         const loadingEl = document.getElementById("loading");
         const errorEl = document.getElementById("error");
-        const productsEl = document.getElementById("products");
+        const catalog = document.getElementById("catalog");
 
         try {
+          if (loadingEl) loadingEl.style.display = "block";
+          if (catalog) catalog.innerHTML = "";
+
           // Call your Netlify function
           const response = await fetch(
             "/.netlify/functions/get-booqable-products"
@@ -1485,6 +1539,7 @@
           }
 
           const data = await response.json();
+          if (loadingEl) loadingEl.style.display = "none";
           const sortCollections = [
             "Bounce House",
             "Slide Combos",
@@ -1527,10 +1582,6 @@
             )
             .filter((item) => item.name !== "All products");
 
-          console.log("All sorted collections", orderedCollections);
-
-          const catalog = document.getElementById("catalog");
-
           orderedCollections.forEach((collection) => {
             // 1️⃣ Create section for the collection
             const section = document.createElement("section");
@@ -1538,10 +1589,9 @@
             section.classList.add(
               collectionBgClass[collection.name] || "bg-default"
             );
-            section.id = collection.slug;
+            if (collection.slug) section.id = collection.slug;
             section.style.padding = "80px 20px";
 
-            console.log("Ids", collectionIds[collection.name]);
             // section.style.background = "#fff9f9";
 
             // Collection title
@@ -1600,25 +1650,45 @@
               thumbsDiv.appendChild(thumbImg);
               info.appendChild(thumbsDiv);
 
-              // Add to Cart button
-              // const btn = document.createElement("button");
-              // btn.className = " bouncy-btn";
-              // btn.textContent = "Add to Cart";
-              // btn.onclick = () =>
-              //   addToCart(
-              //     `${product.attributes.name} – $${(priceCents / 100).toFixed(
-              //       2
-              //     )}`,
-              //     priceCents / 100
-              //   );
-              // info.appendChild(btn);
               const attrs = product.attributes;
 
+              // const booqableBtn = document.createElement("div");
+              // // booqableBtn.textContent = "Add to Cart";
+              // booqableBtn.className = "booqable-product-button";
+              // // booqableBtn.classList.add("bouncy-btn");
+              // booqableBtn.setAttribute("data-id", product.id);
+              // const booq_btn = document.createElement("button");
+              // booq_btn.className = "bouncy-btn";
+              // booq_btn.textContent = "Add to Cart";
+              // booq_btn.setAttribute("data-id", product.id);
+              // booqableBtn.appendChild(booq_btn);
+
+              // const btnWrapper = document.createElement("div");
+              // btnWrapper.className = "btn-wrapper";
+
+              // Custom visible button
+              // const customBtn = document.createElement("button");
+              // customBtn.className = "bouncy-btn custom-btn";
+              // customBtn.textContent = "Add to cart";
+
+              // Hidden booqable button wrapper
+              // const hiddenBtn = document.createElement("div");
+              // hiddenBtn.className = "hidden-btn";
+              // hiddenBtn.addEventListener("click", () => {
+              //   showToast(`Added ${product.attributes.name} to cart`);
+              // });
+
+              // Actual booqable button - FIXED: use slug and correct class name
               const booqableBtn = document.createElement("div");
-              // booqableBtn.textContent = "Add to Cart";
               booqableBtn.className = "booqable-product-button";
-              // booqableBtn.style.backgroundColor = "yellow";
-              booqableBtn.setAttribute("data-id", attrs.slug);
+              const booqableId =
+                (product.attributes && product.attributes.slug) || product.id;
+              booqableBtn.setAttribute("data-id", booqableId);
+
+              // Append structure
+              // hiddenBtn.appendChild(booqableBtn);
+              // btnWrapper.appendChild(customBtn);
+              // btnWrapper.appendChild(hiddenBtn);
 
               info.appendChild(booqableBtn);
 
@@ -1627,59 +1697,37 @@
             });
 
             section.appendChild(gallery);
-            catalog.appendChild(section);
+            if (catalog) catalog.appendChild(section);
           });
-          // Hide loading
-          // console.log("Response", data)
-          // loadingEl.style.display = 'none';
 
-          // Check if we have products
-          // if (!data.product_groups || data.product_groups.length === 0) {
-          //   productsEl.innerHTML = '<div class="no-products">No products available at the moment.</div>';
-          //   return;
-          // }
-
-          // Render products
-          // data.product_groups.forEach(product => {
-          //   const card = document.createElement('div');
-          //   card.className = 'product-card';
-
-          //   // Format price
-          //   const price = product.base_price_in_cents
-          //     ? `$${(product.base_price_in_cents / 100).toFixed(2)}`
-          //     : 'Price on request';
-
-          //   const period = product.price_period ? ` / ${product.price_period}` : '';
-
-          //   card.innerHTML = `
-          //     <img
-          //       src="${product.photo_url || 'https://via.placeholder.com/300x250?text=No+Image'}"
-          //       alt="${product.name || 'Product'}"
-          //       class="product-image"
-          //     >
-          //     <div class="product-content">
-          //       <h3 class="product-name">${product.name || 'Unnamed Product'}</h3>
-          //       <p class="product-description">${product.excerpt || product.description || 'No description available'}</p>
-          //       <div class="product-price">${price}${period}</div>
-          //       <div class="product-button booqable-product" data-id="${product.id}"></div>
-          //     </div>
-          //   `;
-
-          //   productsEl.appendChild(card);
-          // });
+          if (window && window.Booqable) {
+            const b = window.Booqable;
+            const fns = [b.init, b.setup, b.mount, b.render, b.load].filter(
+              (fn) => typeof fn === "function"
+            );
+            fns.some((fn) => {
+              try {
+                fn.call(b);
+                return true;
+              } catch (e) {
+                return false;
+              }
+            });
+          }
         } catch (error) {
           console.error("Error loading products:", error);
-          loadingEl.style.display = "none";
-          errorEl.style.display = "block";
+          if (loadingEl) loadingEl.style.display = "none";
+          if (errorEl) errorEl.style.display = "block";
         }
       }
 
-      // Load products when page loads
-      loadProducts();
+      document.addEventListener("DOMContentLoaded", loadProducts);
 
       document.addEventListener("click", function (e) {
         const dropdown = document.querySelector(".dropdown");
+        if (!dropdown) return;
         const menu = dropdown.querySelector(".dropdown-content");
+        if (!menu) return;
 
         if (!dropdown.contains(e.target)) {
           menu.classList.remove("active");
@@ -1701,6 +1749,7 @@
 
       function toggleProductMenu() {
         const dropdown = document.querySelector(".dropdown");
+        if (!dropdown) return;
         const menu = dropdown.querySelector(".dropdown-content");
         if (!menu) return;
 
@@ -1711,7 +1760,7 @@
         // Close main menu
         document.getElementById("nav-menu").classList.remove("active");
         // Close dropdown if open
-        document.getElementById("products-dropdown").classList.remove("active");
+        // document.getElementById("products-dropdown").classList.remove("active");
         const dropdown = document.querySelector(".dropdown");
         const menu = dropdown.querySelector(".dropdown-content");
         menu.classList.remove("active");

@@ -18,10 +18,20 @@ exports.handler = async (event, context) => {
     };
   }
 
+  if (event.httpMethod !== "GET") {
+    return {
+      statusCode: 405,
+      headers,
+      body: JSON.stringify({ error: "Method Not Allowed" }),
+    };
+  }
+
   try {
     // Get your Booqable credentials from environment variables
-    const BOOQABLE_SUBDOMAIN = "bytown-bounce";
-    const BOOQABLE_API_TOKEN = process.env.BOOQABLE_KEY;
+    const BOOQABLE_SUBDOMAIN =
+      process.env.BOOQABLE_SUBDOMAIN || "bytown-bounce";
+    const BOOQABLE_API_TOKEN =
+      process.env.BOOQABLE_KEY || process.env.BOOQABLE_API_TOKEN;
 
     if (!BOOQABLE_SUBDOMAIN || !BOOQABLE_API_TOKEN) {
       return {
@@ -98,11 +108,11 @@ exports.handler = async (event, context) => {
     // Group collection items by collection_id
 
     const collectionsMap = {};
-    collectionsData.data.forEach((col) => {
+    (collectionsData.data || []).forEach((col) => {
       collectionsMap[col.id] = col;
     });
 
-    const joined = collectionItemsData.data
+    const joined = (collectionItemsData.data || [])
       .map((item) => {
         const col = collectionsMap[item.attributes.collection_id];
         if (!col) return null; // skip if collection not found
@@ -116,7 +126,6 @@ exports.handler = async (event, context) => {
         };
       })
       .filter(Boolean);
-    console.log("Joined", joined);
     const collectionProductsMap = [];
     if (joined) {
       joined.forEach((item) => {
@@ -145,13 +154,6 @@ exports.handler = async (event, context) => {
         }
       });
     }
-
-    // Combine collections with their products
-    const collectionsWithProducts = {
-      collections: collectionsData.data || [],
-      collectionProductsMap: collectionProductsMap,
-      allProducts: productsData.data || [],
-    };
 
     return {
       statusCode: 200,
