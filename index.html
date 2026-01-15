@@ -39,11 +39,11 @@
         ></a>
       </div>
 
-      <div class="nav-right">
-        <a href="/" class="home-icon">
-          <i class="fa-regular fa-house"></i>
-        </a>
+      <a class="nav-logo nav-logo-center" href="#" onclick="scrollToTop(event)">
+        <img src="https://bytownbounce.ca/logo.png" alt="Bytown Bounce" />
+      </a>
 
+      <div class="nav-right">
         <!-- <div class="cart-icon" onclick="toggleCart()">
           <i class="fas fa-shopping-cart"></i>
           <span class="cart-badge" id="cart-badge">0</span>
@@ -688,9 +688,9 @@
     >
       <h2 style="font-size: 3rem">Party Packages – Save Big!</h2>
       <div class="gallery">
-        <div class="card" style="background: white; color: #333">
+        <div class="card package-card">
           <h3>Basic Bounce Package</h3>
-          <ul style="text-align: left">
+          <ul class="package-list">
             <li>Any bounce house</li>
             <li>1 table & bench + 1 table + 1 tent</li>
             <li>Giant LED sign</li>
@@ -703,22 +703,10 @@
             Add Package
           </button>
         </div>
-        <div
-          class="card"
-          style="background: white; color: #333; transform: scale(1.05)"
-        >
-          <div
-            style="
-              background: #ff5e84;
-              color: white;
-              padding: 8px;
-              font-weight: bold;
-            "
-          >
-            MOST POPULAR
-          </div>
+        <div class="card package-card package-card-featured">
+          <div class="package-badge">MOST POPULAR</div>
           <h3>Ultimate Party Package</h3>
-          <ul style="text-align: left">
+          <ul class="package-list">
             <li>Mega Slide Combo</li>
             <li>Snow cone OR cotton candy</li>
             <li>2 table & bench + 1 tent</li>
@@ -732,12 +720,9 @@
             Add Package
           </button>
         </div>
-        <div
-          class="card"
-          style="background: white; color: #333; padding: 40px 20px"
-        >
+        <div class="card package-card">
           <h3>Toddler Dream Package</h3>
-          <ul style="text-align: left">
+          <ul class="package-list">
             <li>Toddler Zone</li>
             <li>6 toddler chairs + table</li>
             <li>Popcorn machine</li>

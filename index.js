@@ -1,7 +1,7 @@
 // Stripe Key
-const stripe = Stripe(
-  "pk_live_51SdYwVFB9Y5lqPP0lTZzRYe6HJFBGjSAnwCOAsO1RsaMzXU22mS4n1A2YxX89g6OiuC37VEqeUOyxNO8EndZNPb000uffmwiJM"
-);
+// const stripe = Stripe(
+//   "pk_live_51SdYwVFB9Y5lqPP0lTZzRYe6HJFBGjSAnwCOAsO1RsaMzXU22mS4n1A2YxX89g6OiuC37VEqeUOyxNO8EndZNPb000uffmwiJM"
+// );
 
 const hardcodedProductImages = {
   "classic-rainbow-castle": [
@@ -85,48 +85,48 @@ const hardcodedProductImages = {
     "https://bytownbounce.ca/images/obstacle-6.jpg",
   ],
   spiderman: [
-    "https://bytownbounce.ca/images/spiderman-1.jpg",
-    "https://bytownbounce.ca/images/spiderman-2.jpg",
+    "https://bytownbounce.ca/images/toddler-3.jpg",
+    "https://bytownbounce.ca/images/toddler-4.jpg",
     "https://bytownbounce.ca/images/spiderman-3.jpg",
     "https://bytownbounce.ca/images/spiderman-4.jpg",
     "https://bytownbounce.ca/images/spiderman-5.jpg",
     "https://bytownbounce.ca/images/spiderman-6.jpg",
   ],
   "spiderman toddler bounce": [
-    "https://bytownbounce.ca/images/spiderman-1.jpg",
-    "https://bytownbounce.ca/images/spiderman-2.jpg",
+    "https://bytownbounce.ca/images/toddler-3.jpg",
+    "https://bytownbounce.ca/images/toddler-4.jpg",
     "https://bytownbounce.ca/images/spiderman-3.jpg",
     "https://bytownbounce.ca/images/spiderman-4.jpg",
     "https://bytownbounce.ca/images/spiderman-5.jpg",
     "https://bytownbounce.ca/images/spiderman-6.jpg",
   ],
   unicorn: [
-    "https://bytownbounce.ca/images/unicorn-1.jpg",
-    "https://bytownbounce.ca/images/unicorn-2.jpg",
+    "https://bytownbounce.ca/images/toddler-5.jpg",
+    "https://bytownbounce.ca/images/toddler-6.jpg",
     "https://bytownbounce.ca/images/unicorn-3.jpg",
     "https://bytownbounce.ca/images/unicorn-4.jpg",
     "https://bytownbounce.ca/images/unicorn-5.jpg",
     "https://bytownbounce.ca/images/unicorn-6.jpg",
   ],
   "unicorn toddler bounce": [
-    "https://bytownbounce.ca/images/unicorn-1.jpg",
-    "https://bytownbounce.ca/images/unicorn-2.jpg",
+    "https://bytownbounce.ca/images/toddler-5.jpg",
+    "https://bytownbounce.ca/images/toddler-6.jpg",
     "https://bytownbounce.ca/images/unicorn-3.jpg",
     "https://bytownbounce.ca/images/unicorn-4.jpg",
     "https://bytownbounce.ca/images/unicorn-5.jpg",
     "https://bytownbounce.ca/images/unicorn-6.jpg",
   ],
   mickey: [
-    "https://bytownbounce.ca/images/mickey-1.jpg",
-    "https://bytownbounce.ca/images/mickey-2.jpg",
+    "https://bytownbounce.ca/images/toddler-1.jpg",
+    "https://bytownbounce.ca/images/toddler-2.jpg",
     "https://bytownbounce.ca/images/mickey-3.jpg",
     "https://bytownbounce.ca/images/mickey-4.jpg",
     "https://bytownbounce.ca/images/mickey-5.jpg",
     "https://bytownbounce.ca/images/mickey-6.jpg",
   ],
   "mickey mouse toddler bounce": [
-    "https://bytownbounce.ca/images/mickey-1.jpg",
-    "https://bytownbounce.ca/images/mickey-2.jpg",
+    "https://bytownbounce.ca/images/toddler-1.jpg",
+    "https://bytownbounce.ca/images/toddler-2.jpg",
     "https://bytownbounce.ca/images/mickey-3.jpg",
     "https://bytownbounce.ca/images/mickey-4.jpg",
     "https://bytownbounce.ca/images/mickey-5.jpg",
@@ -283,7 +283,8 @@ function getProductImages(product) {
   const name = (product.attributes && product.attributes.name) || "";
   const slugKey = String(slug).trim().toLowerCase();
   const nameKey = String(name).trim().toLowerCase();
-  const fromMap = hardcodedProductImages[slugKey] || hardcodedProductImages[nameKey];
+  const fromMap =
+    hardcodedProductImages[slugKey] || hardcodedProductImages[nameKey];
   if (fromMap && Array.isArray(fromMap) && fromMap.length) return fromMap;
   const fallback = product.attributes && product.attributes.photo_url;
   return fallback ? [fallback] : [];
@@ -372,7 +373,10 @@ async function loadProducts() {
         card.dataset.images = JSON.stringify(images);
 
         const img = document.createElement("img");
-        img.src = images[0] || (product.attributes && product.attributes.photo_url) || "";
+        img.src =
+          images[0] ||
+          (product.attributes && product.attributes.photo_url) ||
+          "";
         img.alt = product.attributes.name;
         img.className = "cover-image";
         card.appendChild(img);
@@ -385,7 +389,7 @@ async function loadProducts() {
         info.appendChild(h3);
 
         const desc = document.createElement("p");
-        desc.textContent =
+        desc.innerHTML =
           product.attributes.description || product.attributes.excerpt || "";
         info.appendChild(desc);
 
@@ -394,6 +398,10 @@ async function loadProducts() {
         const priceCents = product.attributes.base_price_in_cents || 0;
         const pricePeriod = product.attributes.price_period || "day";
         price.textContent = `$${(priceCents / 100).toFixed(2)}/${pricePeriod}`;
+        const hst = document.createElement("small");
+        hst.textContent = "+ HST";
+        price.appendChild(document.createTextNode(" "));
+        price.appendChild(hst);
         info.appendChild(price);
 
         const thumbsDiv = document.createElement("div");
@@ -407,13 +415,26 @@ async function loadProducts() {
         });
         info.appendChild(thumbsDiv);
 
+        const btnWrapper = document.createElement("div");
+        btnWrapper.className = "btn-wrapper";
+        const bouncyBtn = document.createElement("button");
+        bouncyBtn.className = "bouncy-btn";
+        bouncyBtn.textContent = "Add to Cart";
+        btnWrapper.appendChild(bouncyBtn);
+        const booqableBtnWrapper = document.createElement("div");
+        booqableBtnWrapper.className = "booqable-btn-wrapper";
+        booqableBtnWrapper.addEventListener("click", () => {
+          showToast("Item added to cart!");
+        });
+
         const booqableBtn = document.createElement("div");
         booqableBtn.className = "booqable-product-button";
         const booqableId =
           (product.attributes && product.attributes.slug) || product.id;
         booqableBtn.setAttribute("data-id", booqableId);
-
-        info.appendChild(booqableBtn);
+        booqableBtnWrapper.appendChild(booqableBtn);
+        btnWrapper.appendChild(booqableBtnWrapper);
+        info.appendChild(btnWrapper);
 
         card.appendChild(info);
         gallery.appendChild(card);
@@ -445,6 +466,33 @@ async function loadProducts() {
 }
 
 document.addEventListener("DOMContentLoaded", loadProducts);
+
+function scrollToTop(e) {
+  if (e && typeof e.preventDefault === "function") e.preventDefault();
+  closeMenu();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function updateHeaderScrolledState() {
+  const header = document.querySelector("header");
+  if (!header) return;
+  const isScrolled = window.scrollY > 10;
+  header.classList.toggle("scrolled", isScrolled);
+}
+
+updateHeaderScrolledState();
+window.addEventListener("scroll", updateHeaderScrolledState, { passive: true });
+
+const headerEl = document.querySelector("header");
+if (headerEl) {
+  headerEl.addEventListener("click", (e) => {
+    const interactive = e.target.closest(
+      "a,button,input,textarea,select,label,.menu-btn,.nav-menu,.dropdown-content,.cart-icon"
+    );
+    if (interactive) return;
+    scrollToTop(e);
+  });
+}
 
 document.addEventListener("click", function (e) {
   const navMenu = document.getElementById("nav-menu");
@@ -544,7 +592,9 @@ function closeModal() {
 function updateImage() {
   modalImg.src = currentGalleryImages[currentIndex];
   if (counter)
-    counter.textContent = `${currentIndex + 1} / ${currentGalleryImages.length}`;
+    counter.textContent = `${currentIndex + 1} / ${
+      currentGalleryImages.length
+    }`;
 }
 
 function showNext() {
@@ -670,46 +720,47 @@ function updateCart() {
   }
 }
 
-function clearCart() {
-  cart = [];
-  updateCart();
-}
+// function clearCart() {
+//   cart = [];
+//   updateCart();
+// }
 
-function goToCheckout() {
-  toggleCart();
-  document.getElementById("booking").scrollIntoView({ behavior: "smooth" });
-}
+// function goToCheckout() {
+//   toggleCart();
+//   document.getElementById("booking").scrollIntoView({ behavior: "smooth" });
+// }
 
-document.getElementById("pay-deposit").addEventListener("click", async () => {
-  try {
-    const total = document.getElementById("cart-sidebar-total").textContent.slice(1);
-    const button = document.getElementById("pay-deposit");
-    button.disabled = true;
-    button.textContent = "Processing...";
+// document.getElementById("pay-deposit").addEventListener("click", async () => {
+//   try {
+//     const total = document
+//       .getElementById("cart-sidebar-total")
+//       .textContent.slice(1);
+//     const button = document.getElementById("pay-deposit");
+//     button.disabled = true;
+//     button.textContent = "Processing...";
 
-    const res = await fetch("/.netlify/functions/create-checkout-session", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ cartTotal: total, cartItems: cart }),
-    });
+//     const res = await fetch("/.netlify/functions/create-checkout-session", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({ cartTotal: total, cartItems: cart }),
+//     });
 
-    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+//     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
-    const { sessionId } = await res.json();
-    const { error } = await stripe.redirectToCheckout({ sessionId });
+//     const { sessionId } = await res.json();
+//     const { error } = await stripe.redirectToCheckout({ sessionId });
 
-    if (error) {
-      console.error("Stripe redirect error:", error);
-      alert("Payment failed: " + error.message);
-      button.disabled = false;
-      button.textContent = "Pay Deposit";
-    }
-  } catch (error) {
-    console.error("Error:", error);
-    alert("Something went wrong. Please try again.");
-    const button = document.getElementById("pay-deposit");
-    button.disabled = false;
-    button.textContent = "Pay Deposit";
-  }
-});
-
+//     if (error) {
+//       console.error("Stripe redirect error:", error);
+//       alert("Payment failed: " + error.message);
+//       button.disabled = false;
+//       button.textContent = "Pay Deposit";
+//     }
+//   } catch (error) {
+//     console.error("Error:", error);
+//     alert("Something went wrong. Please try again.");
+//     const button = document.getElementById("pay-deposit");
+//     button.disabled = false;
+//     button.textContent = "Pay Deposit";
+//   }
+// });

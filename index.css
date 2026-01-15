@@ -52,6 +52,36 @@ header {
   display: flex;
   align-items: center;
 }
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+header .nav-logo.nav-logo-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-right: 0;
+  transform: translate(-50%, calc(-50% - 4px));
+}
+header.scrolled .nav-logo {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+header.scrolled .nav-logo.nav-logo-center {
+  transform: translate(-50%, -50%);
+}
+.nav-logo img {
+  height: 50px;
+  width: auto;
+  display: block;
+}
 .home-icon {
   position: relative;
   color: #333;
@@ -106,7 +136,8 @@ header {
   margin: 0;
   list-style: none;
 }
-.nav-menu a {
+.nav-menu a,
+.home-icon {
   padding: 10px 14px;
   display: block;
   color: #333;
@@ -316,6 +347,13 @@ header {
   font-weight: bold;
   margin: 12px 0;
 }
+.price small {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+  opacity: 0.85;
+  margin-left: 6px;
+}
 .gallery-thumbs {
   display: flex;
   flex-wrap: wrap;
@@ -335,6 +373,81 @@ header {
 }
 .gallery-thumbs img:hover {
   transform: scale(1.08);
+}
+
+#packages .gallery {
+  margin-top: 10px;
+}
+
+#packages .package-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.96);
+  color: #333;
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 30px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  backdrop-filter: blur(6px);
+}
+
+#packages .package-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.24);
+}
+
+#packages .package-card h3 {
+  margin-top: 6px;
+  margin-bottom: 10px;
+  font-size: 1.9rem;
+  color: #222;
+}
+
+#packages .package-list {
+  text-align: left;
+  margin: 14px 0 18px;
+  padding-left: 18px;
+  color: #333;
+  font-size: 1.08rem;
+  line-height: 1.55;
+}
+
+#packages .package-list li {
+  margin: 8px 0;
+}
+
+#packages .package-card .price {
+  margin: 10px 0 18px;
+}
+
+#packages .package-card .bouncy-btn {
+  width: 100%;
+  max-width: 320px;
+}
+
+#packages .package-card-featured {
+  transform: translateY(-6px);
+  border: 2px solid rgba(255, 237, 78, 0.9);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.22);
+}
+
+#packages .package-card-featured:hover {
+  transform: translateY(-14px);
+}
+
+#packages .package-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: linear-gradient(135deg, #ff5e84, #c77dff);
+  color: white;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  font-size: 0.85rem;
+  padding: 10px 14px;
+  border-radius: 999px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
 }
 
 .section-title {
@@ -608,10 +721,18 @@ footer {
   gap: 8px;
 }
 
-/* .booqable-product-button {
-      width: 100%;
-    } */
-/* .booqable-product-button button, */
+.booqable-btn-wrapper {
+  position: absolute;
+  top: 10%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  z-index: 40;
+  width: fit-content;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  opacity: 0;
+}
 .booqable-product-button a,
 .booqable-product-button button {
   display: none;
@@ -645,17 +766,14 @@ footer {
 .booqable-product-button span > button > span > * {
   color: #333;
 }
-.booqable-product-button span > button > span > * {
-  color: #333;
-}
-
-.booqable-product-button {
-  position: relative;
-}
 
 .loading {
   text-align: center;
   padding: 40px;
   font-size: 18px;
   color: #666;
+}
+
+.btn-wrapper {
+  position: relative;
 }
