@@ -305,9 +305,14 @@ async function loadProducts() {
       throw new Error("Failed to fetch products");
     }
 
-    const data = await response.json();
+    const payload = await response.json();
+    const collections = Array.isArray(payload)
+      ? payload
+      : payload.collections || [];
+    const bundles = Array.isArray(payload) ? [] : payload.bundles || [];
 
-    console.log("Products:", data);
+    // console.log("Products:", collections);
+    // console.log("Bundles:", bundles);
     if (loadingEl) loadingEl.style.display = "none";
     const sortCollections = [
       "Bounce House",
@@ -344,7 +349,7 @@ async function loadProducts() {
       "Party Packages – Save Big!": "packages",
     };
 
-    const orderedCollections = data
+    const orderedCollections = collections
       .sort(
         (a, b) =>
           sortCollections.indexOf(a.name) - sortCollections.indexOf(b.name)

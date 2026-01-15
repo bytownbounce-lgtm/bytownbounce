@@ -82,6 +82,20 @@ header.scrolled .nav-logo.nav-logo-center {
   width: auto;
   display: block;
 }
+.nav-menu-logo {
+  display: none;
+}
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 18px;
+}
+.sidebar-logo img {
+  height: 58px;
+  width: auto;
+  display: block;
+}
 .home-icon {
   position: relative;
   color: #333;
@@ -217,6 +231,9 @@ header.scrolled .nav-logo.nav-logo-center {
   .menu-btn {
     display: block;
   }
+  header .nav-logo.nav-logo-center {
+    display: none;
+  }
   .nav-menu {
     position: fixed;
     top: 0;
@@ -240,6 +257,15 @@ header.scrolled .nav-logo.nav-logo-center {
   .nav-menu a {
     padding: 14px 18px;
     border-radius: 0;
+  }
+  .nav-menu-logo {
+    display: block;
+  }
+  .sidebar-logo {
+    padding: 22px 18px 12px;
+  }
+  .sidebar-logo img {
+    height: 70px;
   }
   .dropdown {
     position: static;
@@ -390,6 +416,8 @@ header.scrolled .nav-logo.nav-logo-center {
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
 }
 
 #packages .package-card:hover {
@@ -424,6 +452,15 @@ header.scrolled .nav-logo.nav-logo-center {
 #packages .package-card .bouncy-btn {
   width: 100%;
   max-width: 320px;
+}
+
+#packages
+  .package-booqable-btn-wrapper
+  .booqable-product-button
+  span
+  > button
+  > span {
+  margin-top: 0;
 }
 
 #packages .package-card-featured {
@@ -776,4 +813,28 @@ footer {
 
 .btn-wrapper {
   position: relative;
+}
+
+.package-btn-wrapper {
+  position: relative;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  /* border: 2px solid red; */
+}
+.package-booqable-btn-wrapper {
+  position: absolute;
+  transform: none;
+  z-index: 1;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid green; */
+  right: 20%;
+  bottom: 20px;
+  opacity: 0;
 }
