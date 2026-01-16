@@ -492,6 +492,22 @@ header.scrolled .nav-logo.nav-logo-center {
   text-transform: uppercase;
 }
 
+@media (max-width: 768px) {
+  #packages .package-card-featured {
+    padding-top: 30px;
+  }
+  #packages .package-badge {
+    position: static;
+    transform: none;
+    margin: 0 auto 12px;
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+  #packages .package-card-featured h3 {
+    margin-top: 0;
+  }
+}
+
 .section-title {
   font-size: 2.8rem;
   text-align: center;
