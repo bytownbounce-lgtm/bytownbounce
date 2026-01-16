@@ -21,7 +21,7 @@ exports.handler = async (event) => {
   const { PDFDocument, StandardFonts } = require("pdf-lib");
 
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
-  const FROM_EMAIL = process.env.WAIVER_FROM_EMAIL;
+  const FROM_EMAIL = process.env.WAIVER_FROM_EMAIL || "info@bytownbounce.ca";
   const ADMIN_EMAIL = process.env.WAIVER_ADMIN_EMAIL || "info@bytownbounce.ca";
 
   if (!RESEND_API_KEY || !FROM_EMAIL) {

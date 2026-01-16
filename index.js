@@ -499,6 +499,21 @@ if (headerEl) {
   });
 }
 
+const eventDateInput = document.getElementById("event-date");
+if (eventDateInput) {
+  eventDateInput.addEventListener("focus", () => {
+    if (eventDateInput.type !== "date") eventDateInput.type = "date";
+    if (typeof eventDateInput.showPicker === "function") {
+      try {
+        eventDateInput.showPicker();
+      } catch (e) {}
+    }
+  });
+  eventDateInput.addEventListener("blur", () => {
+    if (!eventDateInput.value) eventDateInput.type = "text";
+  });
+}
+
 document.addEventListener("click", function (e) {
   const navMenu = document.getElementById("nav-menu");
   const menuBtn = document.querySelector(".menu-btn");
@@ -552,6 +567,14 @@ document.querySelectorAll(".nav-menu a").forEach((link) => {
     link.addEventListener("click", closeMenu);
   }
 });
+
+document
+  .querySelectorAll(".package-booqable-btn-wrapper")
+  .forEach((wrapper) => {
+    wrapper.addEventListener("click", () => {
+      showToast("Item added to cart!");
+    });
+  });
 
 // Modal Logic
 const modal = document.getElementById("modal");
