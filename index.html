@@ -52,6 +52,11 @@
           <i class="fas fa-bars"></i>
         </div>
         <ul class="nav-menu" id="nav-menu">
+          <li class="nav-menu-logo">
+            <a href="#" class="sidebar-logo" onclick="scrollToTop(event)">
+              <img src="https://bytownbounce.ca/logo.png" alt="Bytown Bounce" />
+            </a>
+          </li>
           <li class="dropdown" id="dropdown">
             <a
               href="javascript:void(0)"
@@ -695,13 +700,21 @@
             <li>1 table & bench + 1 table + 1 tent</li>
             <li>Giant LED sign</li>
           </ul>
-          <p class="price">$289</p>
-          <button
-            class="bouncy-btn"
-            onclick="addToCart('Basic Bounce Package',289)"
-          >
-            Add Package
-          </button>
+          <p class="price">$230 <span style="font-size: 1.2rem">+HST</span></p>
+          <div class="package-btn-wrapper">
+            <button
+              class="bouncy-btn"
+              onclick="addToCart('Basic Bounce Package',289)"
+            >
+              Add Package
+            </button>
+            <div class="package-booqable-btn-wrapper">
+              <div
+                class="booqable-product-button"
+                data-id="basic-bounce-package"
+              ></div>
+            </div>
+          </div>
         </div>
         <div class="card package-card package-card-featured">
           <div class="package-badge">MOST POPULAR</div>
@@ -712,14 +725,18 @@
             <li>2 table & bench + 1 tent</li>
             <li>LED sign + bubbles</li>
           </ul>
-          <p class="price">$449</p>
-          <button
-            class="bouncy-btn"
-            onclick="addToCart('Ultimate Party Package',449)"
-          >
-            Add Package
-          </button>
+          <p class="price">$399 <span style="font-size: 1.2rem">+HST</span></p>
+          <div class="package-btn-wrapper">
+            <button class="bouncy-btn">Add Package</button>
+            <div class="package-booqable-btn-wrapper">
+              <div
+                class="booqable-product-button"
+                data-id="ultimate-party-package"
+              ></div>
+            </div>
+          </div>
         </div>
+
         <div class="card package-card">
           <h3>Toddler Dream Package</h3>
           <ul class="package-list">
@@ -727,13 +744,16 @@
             <li>6 toddler chairs + table</li>
             <li>Popcorn machine</li>
           </ul>
-          <p class="price">$329</p>
-          <button
-            class="bouncy-btn"
-            onclick="addToCart('Toddler Dream Package',329)"
-          >
-            Add Package
-          </button>
+          <p class="price">$240 <span style="font-size: 1.2rem">+HST</span></p>
+          <div class="package-btn-wrapper">
+            <button class="bouncy-btn">Add Package</button>
+            <div class="package-booqable-btn-wrapper">
+              <div
+                class="booqable-product-button"
+                data-id="toddler-dream-package"
+              ></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -803,7 +823,7 @@
     <!-- BOOKING + CART + STRIPE + LEGAL -->
     <section class="booking" id="booking">
       <h2 style="font-size: 2.8rem">Ready to Lock It In?</h2>
-      <div
+      <!-- <div
         id="cart-summary"
         style="
           background: #fff;
@@ -840,7 +860,7 @@
         >
           Pay $50 Deposit Now
         </button>
-      </div>
+      </div> -->
       <form
         id="booking-form"
         action="https://formspree.io/f/mdkqplpb"
@@ -849,12 +869,18 @@
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="tel" name="phone" placeholder="Phone Number" required />
         <input type="email" name="email" placeholder="Email" />
-        <input type="date" name="date" required />
+        <input
+          type="text"
+          id="event-date"
+          name="date"
+          required
+          placeholder="Event Date"
+        />
         <input type="hidden" name="cart" id="cart-data" />
         <textarea
           name="message"
           rows="4"
-          placeholder="Postcode + any notes"
+          placeholder="Postal code + any notes"
           required
         ></textarea>
         <div class="legal">

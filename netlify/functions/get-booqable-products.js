@@ -97,6 +97,21 @@ exports.handler = async (event, context) => {
 
     const productsData = await productsResponse.json();
 
+    const bundlesResponse = await fetch(
+      `https://${BOOQABLE_SUBDOMAIN}.booqable.com/api/4/bundles?page[size]=100`,
+      {
+        headers: {
+          Authorization: `Bearer ${BOOQABLE_API_TOKEN}`,
+        },
+      }
+    );
+
+    if (!bundlesResponse.ok) {
+      throw new Error(`Booqable Bundles API error: ${bundlesResponse.status}`);
+    }
+
+    const bundlesData = await bundlesResponse.json();
+
     // Create a map of products by their ID
     const productsMap = {};
     if (productsData.data) {
@@ -158,7 +173,10 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify(collectionProductsMap),
+      body: JSON.stringify({
+        collections: collectionProductsMap,
+        bundles: bundlesData.data || [],
+      }),
     };
   } catch (error) {
     console.error("Error fetching products:", error);
