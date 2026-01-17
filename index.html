@@ -93,14 +93,14 @@
     </header>
     <div class="nav-overlay" id="nav-overlay" onclick="closeMenu()"></div>
 
-    <div style="text-align: center; padding: 20px; background: white">
+    <!-- <div style="text-align: center; padding: 20px; background: white">
       <img
         src="https://bytownbounce.ca/images/qr-code.png"
         alt="QR Code for Bytown Bounce"
         style="width: 150px; height: 150px"
       />
       <p>Scan for quick access</p>
-    </div>
+    </div> -->
 
     <!-- Hero Section -->
     <section class="hero">
@@ -113,7 +113,7 @@
         your Ottawa backyard!
       </p>
       <div class="badge">
-        TSSA Certified • Free Delivery • Rain-or-Shine Guarantee
+        TSSA Certified • Fast Delivery • Rain-or-Shine Guarantee
       </div>
       <button
         class="bouncy-btn"
@@ -779,7 +779,7 @@
     >
       <h2 class="section-title">Contact Us</h2>
       <p style="font-size: 1.4rem">Call/Text: (343) 322 7010</p>
-      <p style="font-size: 1.4rem">Email: bytownbounce@gmail.com</p>
+      <p style="font-size: 1.4rem">Email: Info@bytownbounce.ca</p>
       <p style="font-size: 1.2rem">
         Serving Ottawa, Kanata, Orleans, Barrhaven, Nepean and surrounding areas
       </p>
@@ -791,15 +791,26 @@
       style="padding: 80px 20px; background: #f0f8ff; text-align: center"
     >
       <h2 class="section-title">Testimonials</h2>
-      <p style="font-style: italic; max-width: 800px; margin: 0 auto 20px">
-        "Best bouncy castle rental in Ottawa! Kids had a blast." - Sarah K.
-      </p>
-      <p style="font-style: italic; max-width: 800px; margin: 0 auto 20px">
-        "On time, clean, and super friendly. Highly recommend!" - Mike T.
-      </p>
-      <p style="font-style: italic; max-width: 800px; margin: 0 auto">
-        "The packages saved us so much time and money!" - Lisa M.
-      </p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="quote">
+            “Best bouncy castle rental in Ottawa! Kids had a blast.”
+          </div>
+          <div class="author">— Sarah K.</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote">
+            “On time, clean, and super friendly. Highly recommend!”
+          </div>
+          <div class="author">— Mike T.</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote">
+            “The packages saved us so much time and money!”
+          </div>
+          <div class="author">— Lisa M.</div>
+        </div>
+      </div>
     </section>
 
     <!-- CALENDLY -->
@@ -863,7 +874,7 @@
       </div> -->
       <form
         id="booking-form"
-        action="https://formspree.io/f/mdkqplpb"
+        action="/.netlify/functions/submit-booking"
         method="POST"
       >
         <input type="text" name="name" placeholder="Your Name" required />
@@ -945,7 +956,7 @@
 
     <footer>
       <p style="font-size: 1.6rem">Bytown Bounce</p>
-      <p>Call/Text: (343) 322 7010 • bytownbounce@gmail.com</p>
+      <p>Call/Text: (343) 322 7010 • Info@bytownbounce.ca</p>
       <p>© 2026 Bytown Bounce – Ottawa’s favourite party people!</p>
     </footer>
   </body>

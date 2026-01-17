@@ -52,6 +52,22 @@ const hardcodedProductImages = {
     "https://bytownbounce.ca/images/mega-5.jpg",
     "https://bytownbounce.ca/images/mega-6.jpg",
   ],
+  "mega-slide-combo2": [
+    "https://bytownbounce.ca/images/mega-1.jpg",
+    "https://bytownbounce.ca/images/mega-2.jpg",
+    "https://bytownbounce.ca/images/mega-3.jpg",
+    "https://bytownbounce.ca/images/mega-4.jpg",
+    "https://bytownbounce.ca/images/mega-5.jpg",
+    "https://bytownbounce.ca/images/mega-6.jpg",
+  ],
+  "mega slide combo 2": [
+    "https://bytownbounce.ca/images/mega-1.jpg",
+    "https://bytownbounce.ca/images/mega-2.jpg",
+    "https://bytownbounce.ca/images/mega-3.jpg",
+    "https://bytownbounce.ca/images/mega-4.jpg",
+    "https://bytownbounce.ca/images/mega-5.jpg",
+    "https://bytownbounce.ca/images/mega-6.jpg",
+  ],
   "mega-water-slides": [
     "https://bytownbounce.ca/images/water-1.jpg",
     "https://bytownbounce.ca/images/water-2.jpg",
@@ -402,8 +418,8 @@ async function loadProducts() {
         price.className = "price";
         const priceCents = product.attributes.base_price_in_cents || 0;
         const pricePeriod = product.attributes.price_period || "day";
-        price.textContent = `$${(priceCents / 100).toFixed(2)}/${pricePeriod}`;
-        const hst = document.createElement("small");
+        price.textContent = `$${priceCents / 100}/${pricePeriod}`;
+        const hst = document.createElement("span");
         hst.textContent = "+ HST";
         price.appendChild(document.createTextNode(" "));
         price.appendChild(hst);
@@ -701,6 +717,51 @@ function showToast(message) {
   setTimeout(function () {
     toast.className = toast.className.replace("show", "");
   }, 3000);
+}
+
+const bookingForm = document.getElementById("booking-form");
+if (bookingForm) {
+  bookingForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const submitBtn = bookingForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn ? submitBtn.textContent : "";
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending...";
+    }
+
+    try {
+      const data = new FormData(bookingForm);
+      const payload = Object.fromEntries(data.entries());
+
+      const res = await fetch("/.netlify/functions/submit-booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const j = await res.json().catch(() => null);
+        const msg =
+          (j && (j.error || j.message)) ||
+          "Could not send booking request. Please try again.";
+        throw new Error(msg);
+      }
+
+      showToast("Booking request sent!");
+      bookingForm.reset();
+      const eventDate = document.getElementById("event-date");
+      if (eventDate && eventDate.type !== "text") eventDate.type = "text";
+    } catch (err) {
+      showToast(err && err.message ? err.message : "Submission failed.");
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    }
+  });
 }
 
 function updateCart() {
