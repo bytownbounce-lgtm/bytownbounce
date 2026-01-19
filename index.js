@@ -42,7 +42,7 @@ const hardcodedProductImages = {
     "https://bytownbounce.ca/images/mega-3.jpg",
     "https://bytownbounce.ca/images/mega-4.jpg",
     "https://bytownbounce.ca/images/mega-5.jpg",
-    "https://bytownbounce.ca/images/mega-6.jpg",
+    "https://bytownbounce.ca/images/mega-1.jpg",
   ],
   "mega slide combo": [
     "https://bytownbounce.ca/images/mega-1.jpg",
@@ -50,7 +50,7 @@ const hardcodedProductImages = {
     "https://bytownbounce.ca/images/mega-3.jpg",
     "https://bytownbounce.ca/images/mega-4.jpg",
     "https://bytownbounce.ca/images/mega-5.jpg",
-    "https://bytownbounce.ca/images/mega-6.jpg",
+    "https://bytownbounce.ca/images/mega-1.jpg",
   ],
   "mega-slide-combo2": [
     "https://bytownbounce.ca/images/mega-1.jpg",
@@ -258,7 +258,7 @@ const hardcodedProductImages = {
     "https://bytownbounce.ca/images/table-3.jpg",
     "https://bytownbounce.ca/images/table-4.jpg",
     "https://bytownbounce.ca/images/table-5.jpg",
-    "https://bytownbounce.ca/images/table-6.jpg",
+    "https://bytownbounce.ca/images/table-1.jpg",
   ],
   "table-&-bench": [
     "https://bytownbounce.ca/images/table&bench-1.jpg",
@@ -536,7 +536,7 @@ document.addEventListener("click", function (e) {
   const dropdown = document.getElementById("dropdown");
 
   if (
-    window.innerWidth <= 768 &&
+    window.innerWidth <= 1024 &&
     navMenu &&
     navMenu.classList.contains("active") &&
     !navMenu.contains(e.target) &&
@@ -552,7 +552,7 @@ document.addEventListener("click", function (e) {
 });
 
 function toggleMenu() {
-  if (window.innerWidth > 768) return;
+  if (window.innerWidth > 1024) return;
   const navMenu = document.getElementById("nav-menu");
   const overlay = document.getElementById("nav-overlay");
   if (navMenu) navMenu.classList.toggle("active");
