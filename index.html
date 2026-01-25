@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -117,23 +117,26 @@
       </div>
       <button
         class="bouncy-btn"
-        onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})"
+        onclick="
+          document
+            .getElementById('booking')
+            .scrollIntoView({ behavior: 'smooth' })
+        "
       >
         Book Now
       </button>
     </section>
 
-    <section>
+    <!-- <section>
       <div id="loading" class="loading">Loading products ...</div>
       <div id="catalog"></div>
-      <!-- <div class="gallery booqable-product-list"></div> -->
-    </section>
+      <div class="gallery booqable-product-list"></div>
+    </section> -->
 
     <!-- BOUNCE HOUSE -->
-    <!-- <section id="bounce-house" style="padding: 80px 20px; background: #fff9f9">
+    <section id="bounce-house" style="padding: 80px 20px; background: #fff9f9">
       <h2 class="section-title">Bounce House</h2>
       <div class="gallery">
-     
         <div class="card">
           <img
             src="https://bytownbounce.ca/images/classic-1.jpg"
@@ -141,7 +144,7 @@
             class="cover-image"
           />
           <div style="padding: 20px">
-            <h3>Classic Rainbow Castle</h3>
+            <h3>Classic (Lego) Bounce House</h3>
             <p>13×13 · Up to 10 kids</p>
             <p class="price">$199/day</p>
             <div class="gallery-thumbs">
@@ -153,8 +156,12 @@
               <img src="https://bytownbounce.ca/images/classic-6.jpg" />
             </div>
             <button
+              onclick="
+                window.location.href =
+                  'https://bytown-bounce.booqableshop.com/products/classic-rainbow-castle'
+              "
               class="bouncy-btn"
-              onclick="addToCart('Classic Rainbow Castle – $199',199)"
+              onclick="addToCart('Classic Rainbow Castle – $199', 199)"
             >
               Add to Cart
             </button>
@@ -181,20 +188,22 @@
             </div>
             <button
               class="bouncy-btn"
-              onclick="addToCart('White Castle – $349',349)"
+              onclick="
+                window.location.href =
+                  'https://bytown-bounce.booqableshop.com/products/white-castle'
+              "
             >
               Add to Cart
             </button>
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
     <!-- SLIDE COMBOS -->
-    <!-- <section id="slide-combos" style="padding: 80px 20px; background: #f0f8ff">
+    <section id="slide-combos" style="padding: 80px 20px; background: #f0f8ff">
       <h2 class="section-title">Slide Combos</h2>
       <div class="gallery">
-     
         <div class="card">
           <img
             src="https://bytownbounce.ca/images/mega-1.jpg"
@@ -202,7 +211,7 @@
             class="cover-image"
           />
           <div style="padding: 20px">
-            <h3>Mega Slide Combo</h3>
+            <h3>Mega Slide Combo (Ages 3-15)</h3>
             <p>15×20 · Slide + Hoop</p>
             <p class="price">$299/day</p>
             <div class="gallery-thumbs">
@@ -211,59 +220,64 @@
               <img src="https://bytownbounce.ca/images/mega-3.jpg" />
               <img src="https://bytownbounce.ca/images/mega-4.jpg" />
               <img src="https://bytownbounce.ca/images/mega-5.jpg" />
-              <img src="https://bytownbounce.ca/images/mega-6.jpg" />
+              <img src="https://bytownbounce.ca/images/mega-2.jpg" />
             </div>
             <button
               class="bouncy-btn"
-              onclick="addToCart('Mega Slide Combo – $299',299)"
+              onclick="
+                window.location.href =
+                  'https://bytown-bounce.booqableshop.com/products/mega-slide-combo'
+              "
             >
               Add to Cart
             </button>
           </div>
         </div>
-  
+
         <div class="card">
           <img
-            src="https://bytownbounce.ca/images/mega-1.jpg"
-            alt="Mega Slide Combo"
+            src="https://bytownbounce.ca/images/mega-combo1.jpeg"
+            alt="Lego Mega Slide Combo"
             class="cover-image"
           />
           <div style="padding: 20px">
-            <h3>Mega Slide Combo</h3>
+            <h3>Lego Mega Slide Combo</h3>
             <p>15×20 · Slide + Hoop</p>
             <p class="price">$299/day</p>
             <div class="gallery-thumbs">
               <img src="https://bytownbounce.ca/images/mega-1.jpg" />
-              <img src="https://bytownbounce.ca/images/mega-2.jpg" />
-              <img src="https://bytownbounce.ca/images/mega-3.jpg" />
-              <img src="https://bytownbounce.ca/images/mega-4.jpg" />
-              <img src="https://bytownbounce.ca/images/mega-5.jpg" />
-              <img src="https://bytownbounce.ca/images/mega-6.jpg" />
+              <img src="https://bytownbounce.ca/images/mega-combo2.jpeg" />
+              <img src="https://bytownbounce.ca/images/mega-combo3.jpeg" />
+              <img src="https://bytownbounce.ca/images/mega-combo4.jpeg" />
+              <img src="https://bytownbounce.ca/images/mega-combo5.jpeg" />
+              <img src="https://bytownbounce.ca/images/mega-combo1.jpeg" />
             </div>
             <button
               class="bouncy-btn"
-              onclick="addToCart('Mega Slide Combo – $299',299)"
+              onclick="
+                window.location.href =
+                  'https://bytown-bounce.booqableshop.com/products/mega-slide-combo-2'
+              "
             >
               Add to Cart
             </button>
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
     <!-- WATER SLIDES -->
-    <!-- <section id="water-slides" style="padding: 80px 20px; background: #fff9f9">
+    <section id="water-slides" style="padding: 80px 20px; background: #fff9f9">
       <h2 class="section-title">Water Slides</h2>
       <div class="gallery">
-     
         <div class="card">
           <img
             src="https://bytownbounce.ca/images/water-1.jpg"
-            alt="Mega Water Slides"
+            alt="Tropical Water Slide"
             class="cover-image"
           />
           <div style="padding: 20px">
-            <h3>Mega Water Slides</h3>
+            <h3>Tropical Water Slide</h3>
             <p>Wet & wild summer fun</p>
             <p class="price">$399/day</p>
             <div class="gallery-thumbs">
@@ -276,31 +290,33 @@
             </div>
             <button
               class="bouncy-btn"
-              onclick="addToCart('Mega Water Slides – $399',399)"
+              onclick="
+                window.location.href =
+                  'https://bytown-bounce.booqableshop.com/products/mega-water-slides'
+              "
             >
               Add to Cart
             </button>
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
     <!-- OBSTACLE COURSE -->
-    <!-- <section
+    <section
       id="obstacle-course"
       style="padding: 80px 20px; background: #f0f8ff"
     >
       <h2 class="section-title">Obstacle Course</h2>
       <div class="gallery">
-       
         <div class="card">
           <img
             src="https://bytownbounce.ca/images/obstacle-1.jpg"
-            alt="Mega Obstacle Course"
+            alt="Obstacle Course"
             class="cover-image"
           />
           <div style="padding: 20px">
-            <h3>Mega Obstacle Course</h3>
+            <h3>Obstacle Course</h3>
             <p>30–40 ft long · Epic fun!</p>
             <p class="price">$449/day</p>
             <div class="gallery-thumbs">
@@ -313,105 +329,116 @@
             </div>
             <button
               class="bouncy-btn"
-              onclick="addToCart('Mega Obstacle Course – $449',449)"
+              onclick="
+                window.location.href =
+                  'https://bytown-bounce.booqableshop.com/products/obstacle-course'
+              "
             >
               Add to Cart
             </button>
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
     <!-- TODDLER SOFT PLAY ZONE -->
-    <!-- <section id="toddler-zone" style="padding: 80px 20px; background: #fff9f9">
+    <section id="toddler-zone" style="padding: 80px 20px; background: #fff9f9">
       <h2 class="section-title">Toddler Soft Play Zone</h2>
       <div class="gallery">
-   
         <div class="card">
           <img
-            src="https://bytownbounce.ca/images/spiderman-1.jpg"
+            src="https://bytownbounce.ca/images/spiderman.jpeg"
             alt="Spiderman Toddler Bounce"
             class="cover-image"
           />
           <div style="padding: 20px">
             <h3>Spiderman Toddler Bounce</h3>
-            <p>Ages 1–4 · Superhero fun</p>
+            <p>Ages 1–3 · Superhero fun</p>
             <p class="price">$179/day</p>
             <div class="gallery-thumbs">
-              <img src="https://bytownbounce.ca/images/spiderman-1.jpg" />
-              <img src="https://bytownbounce.ca/images/spiderman-2.jpg" />
-              <img src="https://bytownbounce.ca/images/spiderman-3.jpg" />
-              <img src="https://bytownbounce.ca/images/spiderman-4.jpg" />
-              <img src="https://bytownbounce.ca/images/spiderman-5.jpg" />
-              <img src="https://bytownbounce.ca/images/spiderman-6.jpg" />
+              <img src="https://bytownbounce.ca/images/spiderman.jpeg" />
+              <img src="https://bytownbounce.ca/images/spiderman2.jpeg" />
+              <img src="https://bytownbounce.ca/images/spiderman3.jpeg" />
+              <img src="https://bytownbounce.ca/images/spiderman4.jpeg" />
+              <img src="https://bytownbounce.ca/images/spiderman5.jpeg" />
+              <img src="https://bytownbounce.ca/images/spiderman6.jpeg" />
             </div>
             <button
               class="bouncy-btn"
-              onclick="addToCart('Spiderman Toddler Bounce – $179',179)"
+              onclick="
+                window.location.href =
+                  'https://bytown-bounce.booqableshop.com/products/spiderman-toddler-bounce'
+              "
             >
               Add to Cart
             </button>
           </div>
         </div>
-       
+
         <div class="card">
           <img
-            src="https://bytownbounce.ca/images/unicorn-1.jpg"
+            src="https://bytownbounce.ca/images/unicorn.jpeg"
             alt="Unicorn Toddler Bounce"
             class="cover-image"
           />
           <div style="padding: 20px">
             <h3>Unicorn Toddler Bounce</h3>
-            <p>Ages 1–4 · Magical fun</p>
+            <p>Ages 1–3 · Magical fun</p>
             <p class="price">$179/day</p>
             <div class="gallery-thumbs">
-              <img src="https://bytownbounce.ca/images/unicorn-1.jpg" />
-              <img src="https://bytownbounce.ca/images/unicorn-2.jpg" />
-              <img src="https://bytownbounce.ca/images/unicorn-3.jpg" />
-              <img src="https://bytownbounce.ca/images/unicorn-4.jpg" />
-              <img src="https://bytownbounce.ca/images/unicorn-5.jpg" />
-              <img src="https://bytownbounce.ca/images/unicorn-6.jpg" />
+              <img src="https://bytownbounce.ca/images/unicorn.jpeg" />
+              <img src="https://bytownbounce.ca/images/unicorn2.jpeg" />
+              <img src="https://bytownbounce.ca/images/unicorn3.jpeg" />
+              <img src="https://bytownbounce.ca/images/unicorn4.jpeg" />
+              <img src="https://bytownbounce.ca/images/unicorn5.jpeg" />
+              <img src="https://bytownbounce.ca/images/unicorn6.jpeg" />
             </div>
             <button
               class="bouncy-btn"
-              onclick="addToCart('Unicorn Toddler Bounce – $179',179)"
+              onclick="
+                window.location.href =
+                  'https://bytown-bounce.booqableshop.com/products/unicorn-toddler-bounce'
+              "
             >
               Add to Cart
             </button>
           </div>
         </div>
-       
+
         <div class="card">
           <img
-            src="https://bytownbounce.ca/images/mickey-1.jpg"
+            src="https://bytownbounce.ca/images/mickey1.jpeg"
             alt="Mickey Mouse Toddler Bounce"
             class="cover-image"
           />
           <div style="padding: 20px">
             <h3>Mickey Mouse Toddler Bounce</h3>
-            <p>Ages 1–4 · Disney magic</p>
+            <p>Ages 1–3 · Disney magic</p>
             <p class="price">$179/day</p>
             <div class="gallery-thumbs">
-              <img src="https://bytownbounce.ca/images/mickey-1.jpg" />
-              <img src="https://bytownbounce.ca/images/mickey-2.jpg" />
-              <img src="https://bytownbounce.ca/images/mickey-3.jpg" />
-              <img src="https://bytownbounce.ca/images/mickey-4.jpg" />
-              <img src="https://bytownbounce.ca/images/mickey-5.jpg" />
-              <img src="https://bytownbounce.ca/images/mickey-6.jpg" />
+              <img src="https://bytownbounce.ca/images/mickey1.jpeg" />
+              <img src="https://bytownbounce.ca/images/mickey2.jpeg" />
+              <img src="https://bytownbounce.ca/images/mickey3.jpeg" />
+              <img src="https://bytownbounce.ca/images/mickey4.jpeg" />
+              <img src="https://bytownbounce.ca/images/mickey5.jpeg" />
+              <img src="https://bytownbounce.ca/images/toddler-1.jpg" />
             </div>
             <button
               class="bouncy-btn"
-              onclick="addToCart('Mickey Mouse Toddler Bounce – $179',179)"
+              onclick="
+                window.location.href =
+                  'https://bytown-bounce.booqableshop.com/products/mickey-mouse-toddler-bounce'
+              "
             >
               Add to Cart
             </button>
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
     <!-- INFLATABLE ARCADE GAMES -->
-    <!-- <section
+    <section
       id="arcade-games"
       style="padding: 80px 20px; background: #f0fff0; text-align: center"
     >
@@ -421,7 +448,6 @@
         challenges!
       </p>
       <div class="gallery">
-     
         <div class="card">
           <img
             src="https://bytownbounce.ca/images/basketball-1.jpg"
@@ -442,13 +468,16 @@
             </div>
             <button
               class="bouncy-btn"
-              onclick="addToCart('13ft Basketball Hoop Game – $149',149)"
+              onclick="
+                window.location.href =
+                  'https://bytown-bounce.booqableshop.com/products/13ft-basketball-hoop-game'
+              "
             >
               Add to Cart
             </button>
           </div>
         </div>
-       
+
         <div class="card">
           <img
             src="https://bytownbounce.ca/images/carnival-1.jpg"
@@ -472,13 +501,16 @@
             </div>
             <button
               class="bouncy-btn"
-              onclick="addToCart('5-IN-1 Carnival Game – $199',199)"
+              onclick="
+                window.location.href =
+                  'https://bytown-bounce.booqableshop.com/products/5-in-1-carnival-game'
+              "
             >
               Add to Cart
             </button>
           </div>
         </div>
-       
+
         <div class="card">
           <img
             src="https://bytownbounce.ca/images/soccerdarts-1.jpg"
@@ -499,23 +531,25 @@
             </div>
             <button
               class="bouncy-btn"
-              onclick="addToCart('10 ft Soccer Darts Board – $179',179)"
+              onclick="
+                window.location.href =
+                  'https://bytown-bounce.booqableshop.com/products/10-ft-soccer-darts-board'
+              "
             >
               Add to Cart
             </button>
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
     <!-- CONCESSION RENTALS -->
-    <!-- <section
+    <section
       id="concessions"
       style="padding: 80px 20px; background: #fff9f9; text-align: center"
     >
       <h2 class="section-title">Concession Rentals</h2>
       <div class="gallery">
-   
         <div class="card">
           <img
             src="https://bytownbounce.ca/images/snowcone-1.jpg"
@@ -532,17 +566,20 @@
               <img src="https://bytownbounce.ca/images/snowcone-3.jpg" />
               <img src="https://bytownbounce.ca/images/snowcone-4.jpg" />
               <img src="https://bytownbounce.ca/images/snowcone-5.jpg" />
-              <img src="https://bytownbounce.ca/images/snowcone-6.jpg" />
+              <img src="https://bytownbounce.ca/images/snowcone-1.jpg" />
             </div>
             <button
               class="bouncy-btn"
-              onclick="addToCart('Snow Cone Machine',99)"
+              onclick="
+                window.location.href =
+                  'https://bytown-bounce.booqableshop.com/products/snow-cone-machine'
+              "
             >
               Add to Cart
             </button>
           </div>
         </div>
- 
+
         <div class="card">
           <img
             src="https://bytownbounce.ca/images/popcorn-1.jpg"
@@ -563,13 +600,16 @@
             </div>
             <button
               class="bouncy-btn"
-              onclick="addToCart('Popcorn Machine',89)"
+              onclick="
+                window.location.href =
+                  'https://bytown-bounce.booqableshop.com/products/popcorn-machine'
+              "
             >
               Add to Cart
             </button>
           </div>
         </div>
-   
+
         <div class="card">
           <img
             src="https://bytownbounce.ca/images/cottoncandy-1.jpg"
@@ -590,23 +630,25 @@
             </div>
             <button
               class="bouncy-btn"
-              onclick="addToCart('Cotton Candy Machine',109)"
+              onclick="
+                window.location.href =
+                  'https://bytown-bounce.booqableshop.com/products/cotton-candy-machine'
+              "
             >
               Add to Cart
             </button>
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
     <!-- PARTY RENTALS -->
-    <!-- <section
+    <section
       id="party-rentals"
       style="padding: 80px 20px; background: #f8f8ff; text-align: center"
     >
       <h2 class="section-title">Party Rentals</h2>
       <div class="gallery">
- 
         <div class="card">
           <img
             src="https://bytownbounce.ca/images/table-1.jpg"
@@ -622,17 +664,20 @@
               <img src="https://bytownbounce.ca/images/table-3.jpg" />
               <img src="https://bytownbounce.ca/images/table-4.jpg" />
               <img src="https://bytownbounce.ca/images/table-5.jpg" />
-              <img src="https://bytownbounce.ca/images/table-6.jpg" />
+              <img src="https://bytownbounce.ca/images/table-4.jpg" />
             </div>
             <button
               class="bouncy-btn"
-              onclick="addToCart('6-ft Folding Table',12)"
+              onclick="
+                window.location.href =
+                  'https://bytown-bounce.booqableshop.com/products/6-ft-folding-table'
+              "
             >
               Add Table
             </button>
           </div>
         </div>
-       
+
         <div class="card">
           <img
             src="https://bytownbounce.ca/images/table&bench-1.jpg"
@@ -650,12 +695,18 @@
               <img src="https://bytownbounce.ca/images/table&bench-5.jpg" />
               <img src="https://bytownbounce.ca/images/table&bench-6.jpg" />
             </div>
-            <button class="bouncy-btn" onclick="addToCart('Table & Bench',20)">
+            <button
+              class="bouncy-btn"
+              onclick="
+                window.location.href =
+                  'https://bytown-bounce.booqableshop.com/products/table-bench'
+              "
+            >
               Add Table & Bench
             </button>
           </div>
         </div>
-    
+
         <div class="card">
           <img
             src="https://bytownbounce.ca/images/partytent-1.jpg"
@@ -673,14 +724,19 @@
               <img src="https://bytownbounce.ca/images/partytent-5.jpg" />
               <img src="https://bytownbounce.ca/images/partytent-6.jpg" />
             </div>
-            <button class="bouncy-btn" onclick="addToCart('Party Tent',105)">
+            <button
+              class="bouncy-btn"
+              onclick="
+                window.location.href =
+                  'https://bytown-bounce.booqableshop.com/products/party-tent'
+              "
+            >
               Add Tent
             </button>
           </div>
         </div>
       </div>
-    </section> -->
-
+    </section>
     <!-- PARTY PACKAGES -->
     <section
       id="packages"
@@ -704,7 +760,7 @@
           <div class="package-btn-wrapper">
             <button
               class="bouncy-btn"
-              onclick="addToCart('Basic Bounce Package',289)"
+              onclick="addToCart('Basic Bounce Package', 289)"
             >
               Add Package
             </button>

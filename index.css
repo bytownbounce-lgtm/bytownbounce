@@ -357,6 +357,7 @@ header.scrolled .nav-logo.nav-logo-center {
   margin: 0 auto;
 }
 .card {
+  position: relative;
   background: white;
   border-radius: 20px;
   overflow: hidden;
@@ -408,6 +409,92 @@ header.scrolled .nav-logo.nav-logo-center {
 }
 .gallery-thumbs img:hover {
   transform: scale(1.08);
+}
+
+.desc-toggle-btn {
+  appearance: none;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+  margin: 8px 0 2px;
+}
+
+.desc-toggle-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 1);
+}
+
+.desc-toggle-btn:focus-visible {
+  outline: 3px solid rgba(255, 94, 132, 0.35);
+  outline-offset: 3px;
+}
+
+.product-description-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 62%;
+  padding: 16px 16px 18px;
+  background: rgba(255, 255, 255, 0.98);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  transform: translateY(105%);
+  transition: transform 0.22s ease;
+  pointer-events: none;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.product-description-overlay.is-open {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.product-description-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.product-description-title {
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.product-description-close {
+  appearance: none;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.product-description-close:focus-visible {
+  outline: 3px solid rgba(255, 94, 132, 0.35);
+  outline-offset: 3px;
+}
+
+.product-description-list {
+  margin: 0;
+  padding-left: 18px;
+  overflow: auto;
+}
+
+.product-description-list li {
+  margin: 8px 0;
+  font-size: 1.02rem;
 }
 
 #packages .gallery {
