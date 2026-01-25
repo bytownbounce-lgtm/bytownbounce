@@ -294,6 +294,87 @@ const hardcodedProductImages = {
   ],
 };
 
+const productDescriptionsBySlug = {
+  "classic-rainbow-castle": [
+    "Commercial grade",
+    "For kids and adults ages 3+",
+    "Maximum weight per user 250lbs",
+    "Total weight capacity of 1,500lbs",
+  ],
+  "white-castle": [
+    "Commercial grade",
+    "For kids and adults ages 3+",
+    "Maximum weight per user 250lbs",
+    "Total weight capacity of 500 lbs.",
+  ],
+  "mega-water-slides": [
+    "Commercial Grade",
+    "For kids and adults ages 3+",
+    "Maximum weight per user 250lbs",
+    "Total weight capacity of 600 lbs",
+  ],
+  "mega-slide-combo2": [
+    "Commercial Grade",
+    "For kids and adults ages 3+",
+    "Maximum weight per user 250lbs",
+    "Total weight capacity of 800lbs",
+  ],
+  "mega-slide-combo-2": [
+    "Commercial Grade",
+    "For kids and adults ages 3+",
+    "Maximum weight per user 250lbs",
+    "Total weight capacity of 800lbs",
+  ],
+  "mega-slide-combo": [
+    "Commercial Grade",
+    "For kids and adults ages 3 - 15",
+    "Maximum weight per user 155lbs",
+    "Total weight capacity 500lbs",
+  ],
+  "obstacle-course": [
+    "Commercial Grade",
+    "For kids and adults ages 3+",
+    "Maximum weight per user 175lbs",
+    "Total weight capacity 700lbs",
+  ],
+  "spiderman-toddler-bounce": [
+    "Commercial Grade",
+    "For kids ages 1 – 3 year olds",
+    "Maximum weight per user: —",
+    "Total weight capacity 200lbs",
+  ],
+  "unicorn-toddler-bounce": [
+    "Commercial Grade",
+    "For kids ages 1 – 3 year olds",
+    "Maximum weight per user: —",
+    "Total weight capacity 200lbs",
+  ],
+  "mickey-mouse-toddler-bounce": [
+    "Commercial Grade",
+    "For kids ages 1 – 3 year olds",
+    "Maximum weight per user: —",
+    "Total weight capacity 200lbs",
+  ],
+  "13ft-basketball-hoop-game": [
+    "Commercial Grade",
+    "Great for all ages – Multi height Hoop Layout",
+    "Comes with 5 built in hoops at various height",
+    "Includes 480 watt blower",
+  ],
+  "5-in-1-carnival-game": [
+    "Dimensions: 20ft L x 20ft W x 13ft H",
+    "For kids and adults",
+    "Games: basketball hoop, Axe Throw, Football target, Toss Rings, Tic-Tac-Toe",
+    "Perfect for all type of events",
+  ],
+  "10-ft-soccer-darts-board": [
+    "Dimensions: 10ft x 6.2ft x 10ft",
+    "For kids and adults of all ages",
+    "Comes with 8 inflatable soccer balls",
+    "Perfect for all event",
+  ],
+};
+
 function getProductImages(product) {
   const slug = (product.attributes && product.attributes.slug) || "";
   const name = (product.attributes && product.attributes.name) || "";
@@ -368,7 +449,7 @@ async function loadProducts() {
     const orderedCollections = collections
       .sort(
         (a, b) =>
-          sortCollections.indexOf(a.name) - sortCollections.indexOf(b.name)
+          sortCollections.indexOf(a.name) - sortCollections.indexOf(b.name),
       )
       .filter((item) => item.name !== "All products");
 
@@ -468,7 +549,7 @@ async function loadProducts() {
     if (window && window.Booqable) {
       const b = window.Booqable;
       const fns = [b.init, b.setup, b.mount, b.render, b.load].filter(
-        (fn) => typeof fn === "function"
+        (fn) => typeof fn === "function",
       );
       fns.some((fn) => {
         try {
@@ -487,6 +568,122 @@ async function loadProducts() {
 }
 
 document.addEventListener("DOMContentLoaded", loadProducts);
+document.addEventListener("DOMContentLoaded", injectProductDescriptions);
+document.addEventListener("DOMContentLoaded", initCardImageDatasets);
+
+function getProductSlugFromCard(card) {
+  const buttons = card.querySelectorAll("button[onclick]");
+  for (const btn of buttons) {
+    const onclick = btn.getAttribute("onclick") || "";
+    const match = onclick.match(/booqableshop\.com\/products\/([a-z0-9-]+)/i);
+    if (match && match[1]) return match[1].toLowerCase();
+  }
+  return null;
+}
+
+function injectProductDescriptions() {
+  const cards = document.querySelectorAll(".card:not(.package-card)");
+  cards.forEach((card, index) => {
+    if (
+      card.querySelector("[data-description-toggle]") ||
+      card.querySelector(".product-description-overlay")
+    ) {
+      return;
+    }
+
+    const slug = getProductSlugFromCard(card);
+    if (!slug) return;
+
+    const descriptionLines = productDescriptionsBySlug[slug];
+    if (!descriptionLines || !descriptionLines.length) return;
+
+    const content =
+      card.querySelector('div[style*="padding: 20px"]') ||
+      card.querySelector("div");
+    if (!content) return;
+
+    const overlayId = `desc-${slug}-${index}`;
+
+    const toggleBtn = document.createElement("button");
+    toggleBtn.type = "button";
+    toggleBtn.className = "desc-toggle-btn";
+    toggleBtn.setAttribute("data-description-toggle", "");
+    toggleBtn.setAttribute("aria-expanded", "false");
+    toggleBtn.setAttribute("aria-controls", overlayId);
+    toggleBtn.textContent = "Product Description";
+
+    const priceEl = content.querySelector(".price");
+    if (priceEl && priceEl.parentNode) {
+      priceEl.insertAdjacentElement("afterend", toggleBtn);
+    } else {
+      content.appendChild(toggleBtn);
+    }
+
+    const overlay = document.createElement("div");
+    overlay.className = "product-description-overlay";
+    overlay.id = overlayId;
+    overlay.setAttribute("aria-hidden", "true");
+
+    const header = document.createElement("div");
+    header.className = "product-description-header";
+
+    const title = document.createElement("div");
+    title.className = "product-description-title";
+    title.textContent = "Product Description";
+
+    const closeBtn = document.createElement("button");
+    closeBtn.type = "button";
+    closeBtn.className = "product-description-close";
+    closeBtn.setAttribute("data-description-close", "");
+    closeBtn.setAttribute("aria-label", "Close description");
+    closeBtn.innerHTML = "&times;";
+
+    header.appendChild(title);
+    header.appendChild(closeBtn);
+
+    const list = document.createElement("ul");
+    list.className = "product-description-list";
+    descriptionLines.forEach((line) => {
+      const li = document.createElement("li");
+      li.textContent = line;
+      list.appendChild(li);
+    });
+
+    overlay.appendChild(header);
+    overlay.appendChild(list);
+    card.appendChild(overlay);
+  });
+}
+
+function initCardImageDatasets() {
+  document.querySelectorAll(".card:not(.package-card)").forEach((card) => {
+    if (card.dataset.images) return;
+
+    const cover = card.querySelector("img.cover-image");
+    const thumbs = Array.from(card.querySelectorAll(".gallery-thumbs img"));
+    const urls = [];
+
+    const addUrl = (url) => {
+      if (!url) return;
+      const normalized = String(url).trim();
+      if (!normalized) return;
+      if (!urls.includes(normalized)) urls.push(normalized);
+    };
+
+    if (cover) addUrl(cover.currentSrc || cover.src);
+    thumbs.forEach((img) => addUrl(img.currentSrc || img.src));
+
+    if (!urls.length) return;
+
+    card.dataset.images = JSON.stringify(urls);
+
+    thumbs.forEach((img, idx) => {
+      const src = String(img.currentSrc || img.src || "").trim();
+      const urlIndex = urls.indexOf(src);
+      img.dataset.index = String(urlIndex >= 0 ? urlIndex : idx);
+    });
+  });
+}
 
 function scrollToTop(e) {
   if (e && typeof e.preventDefault === "function") e.preventDefault();
@@ -508,7 +705,7 @@ const headerEl = document.querySelector("header");
 if (headerEl) {
   headerEl.addEventListener("click", (e) => {
     const interactive = e.target.closest(
-      "a,button,input,textarea,select,label,.menu-btn,.nav-menu,.dropdown-content,.cart-icon"
+      "a,button,input,textarea,select,label,.menu-btn,.nav-menu,.dropdown-content,.cart-icon",
     );
     if (interactive) return;
     scrollToTop(e);
@@ -549,6 +746,52 @@ document.addEventListener("click", function (e) {
   if (dropdown && !dropdown.contains(e.target)) {
     dropdown.classList.remove("open");
   }
+});
+
+function setProductDescriptionOpen(overlay, toggleBtn, isOpen) {
+  overlay.classList.toggle("is-open", isOpen);
+  overlay.setAttribute("aria-hidden", String(!isOpen));
+  if (toggleBtn) toggleBtn.setAttribute("aria-expanded", String(isOpen));
+}
+
+document.addEventListener("click", (e) => {
+  const toggleBtn = e.target.closest("[data-description-toggle]");
+  if (toggleBtn) {
+    const overlayId = toggleBtn.getAttribute("aria-controls");
+    const overlay = overlayId ? document.getElementById(overlayId) : null;
+    if (!overlay) return;
+    const isOpen = overlay.classList.contains("is-open");
+    setProductDescriptionOpen(overlay, toggleBtn, !isOpen);
+    return;
+  }
+
+  const closeBtn = e.target.closest("[data-description-close]");
+  if (closeBtn) {
+    const overlay = closeBtn.closest(".product-description-overlay");
+    if (!overlay) return;
+    const card = overlay.closest(".card");
+    const toggleBtn = card
+      ? card.querySelector(
+          `[data-description-toggle][aria-controls="${overlay.id}"]`,
+        )
+      : null;
+    setProductDescriptionOpen(overlay, toggleBtn, false);
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape") return;
+  document
+    .querySelectorAll(".product-description-overlay.is-open")
+    .forEach((overlay) => {
+      const card = overlay.closest(".card");
+      const toggleBtn = card
+        ? card.querySelector(
+            `[data-description-toggle][aria-controls="${overlay.id}"]`,
+          )
+        : null;
+      setProductDescriptionOpen(overlay, toggleBtn, false);
+    });
 });
 
 function toggleMenu() {
@@ -785,7 +1028,7 @@ function updateCart() {
           <span>${item}</span>
           <span class="cart-remove-btn" onclick="removeFromCart(${index})"><i class="fas fa-trash"></i></span>
         </div>
-      `
+      `,
       )
       .join("");
   }
