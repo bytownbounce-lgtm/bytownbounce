@@ -11,6 +11,8 @@
   "workspace": {
     "packageJson": {
       "dependencies": [
+        "npm:netlify-cli@^23.15.1",
+        "npm:pdf-lib@^1.17.1",
         "npm:stripe@^16.5.0"
       ]
     }

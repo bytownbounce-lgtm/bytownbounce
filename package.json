@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Bytown Bounce party rentals site",
   "dependencies": {
+    "netlify-cli": "^23.15.1",
     "pdf-lib": "^1.17.1",
     "stripe": "^16.5.0"
   },

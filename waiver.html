@@ -45,61 +45,73 @@
 
                 <div>Event / Rental Information</div>
                 <div class="inline-line">
-                  Customer Name:
-                  <input
-                    class="inline-input"
-                    id="customerName"
-                    name="customerName"
-                    type="text"
-                    required
-                    autocomplete="name"
-                  />
-                  Phone:
-                  <input
-                    class="inline-input"
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    required
-                    autocomplete="tel"
-                  />
-                  Email:
-                  <input
-                    class="inline-input"
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    autocomplete="email"
-                  />
+                  <div class="inline-group">
+                    Customer Name:
+                    <input
+                      class="inline-input"
+                      id="customerName"
+                      name="customerName"
+                      type="text"
+                      required
+                      autocomplete="name"
+                    />
+                  </div>
+                  <div class="inline-group">
+                    Phone:
+                    <input
+                      class="inline-input"
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      required
+                      autocomplete="tel"
+                    />
+                  </div>
+                  <div class="inline-group">
+                    Email:
+                    <input
+                      class="inline-input"
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      autocomplete="email"
+                    />
+                  </div>
                 </div>
                 <div class="inline-line">
-                  Rental Date:
-                  <input
-                    class="inline-input"
-                    id="rentalDate"
-                    name="rentalDate"
-                    type="date"
-                    required
-                  />
-                  Location (Address):
-                  <input
-                    class="inline-input inline-input-wide"
-                    id="location"
-                    name="location"
-                    type="text"
-                    required
-                  />
+                  <div class="inline-group">
+                    Rental Date:
+                    <input
+                      class="inline-input"
+                      id="rentalDate"
+                      name="rentalDate"
+                      type="date"
+                      required
+                    />
+                  </div>
+                  <div class="inline-group inline-group-wide">
+                    Location (Address):
+                    <input
+                      class="inline-input inline-input-wide"
+                      id="location"
+                      name="location"
+                      type="text"
+                      required
+                    />
+                  </div>
                 </div>
                 <div class="inline-line">
-                  Products Rented:
-                  <textarea
-                    class="inline-input inline-input-wide"
-                    id="productsRented"
-                    name="productsRented"
-                    required
-                    placeholder="(e.g., Classic Rainbow Castle, Mega Water Slides, etc.)"
-                  ></textarea>
+                  <div class="inline-group inline-group-wide">
+                    Products Rented:
+                    <textarea
+                      class="inline-input inline-input-wide"
+                      id="productsRented"
+                      name="productsRented"
+                      required
+                      placeholder="(e.g., Classic Rainbow Castle, Mega Water Slides, etc.)"
+                    ></textarea>
+                  </div>
                 </div>
 
                 <div class="spacer"></div>
@@ -259,56 +271,59 @@
                 <div class="spacer"></div>
 
                 <div class="inline-line">
-                  Signature:
-                  <input
-                    class="inline-input"
-                    id="signatureName"
-                    name="signatureName"
-                    type="text"
-                    required
-                  />
-                  Date:
-                  <input
-                    class="inline-input"
-                    id="signatureDate"
-                    name="signatureDate"
-                    type="date"
-                    required
-                  />
-                  Printed Name:
-                  <input
-                    class="inline-input"
-                    id="printedName"
-                    name="printedName"
-                    type="text"
-                    required
-                  />
+                  <div class="inline-group">
+                    Signature:
+                    <input
+                      class="inline-input"
+                      id="signatureName"
+                      name="signatureName"
+                      type="text"
+                      required
+                    />
+                  </div>
+                  <div class="inline-group">
+                    Date:
+                    <input
+                      class="inline-input"
+                      id="signatureDate"
+                      name="signatureDate"
+                      type="date"
+                      required
+                    />
+                  </div>
+                 
                 </div>
                 <div class="inline-line">
-                  Relationship to Participants (if signing for others):
-                  <input
-                    class="inline-input inline-input-wide"
-                    id="relationship"
-                    name="relationship"
-                    type="text"
-                    required
-                  />
+                  <div class="inline-group inline-group-wide">
+                    Relationship to Participants (if signing for others):
+                    <input
+                      class="inline-input inline-input-wide"
+                      id="relationship"
+                      name="relationship"
+                      type="text"
+                      required
+                    />
+                  </div>
                 </div>
                 <div class="inline-line">
-                  Bytown Bounce Representative (optional):
-                  <input
-                    class="inline-input"
-                    id="representative"
-                    name="representative"
-                    type="text"
-                  />
-                  Date:
-                  <input
-                    class="inline-input"
-                    id="representativeDate"
-                    name="representativeDate"
-                    type="date"
-                  />.
+                  <div class="inline-group">
+                    Bytown Bounce Representative (optional):
+                    <input
+                      class="inline-input"
+                      id="representative"
+                      name="representative"
+                      type="text"
+                    />
+                  </div>
+                  <!-- <div class="inline-group">
+                    Date:
+                    <input
+                      class="inline-input"
+                      id="representativeDate"
+                      name="representativeDate"
+                      type="date"
+                    />.
+                  </div> -->
                 </div>
 
                 <div class="signature">
