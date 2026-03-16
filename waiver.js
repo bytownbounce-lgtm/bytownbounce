@@ -48,15 +48,36 @@ const setupCanvas = () => {
   if (!signaturePad) return;
   const dpr = window.devicePixelRatio || 1;
   const rect = signaturePad.getBoundingClientRect();
-  signaturePad.width = Math.floor(rect.width * dpr);
-  signaturePad.height = Math.floor(rect.height * dpr);
+  const newWidth = Math.floor(rect.width * dpr);
+  const newHeight = Math.floor(rect.height * dpr);
+
+  if (signaturePad.width === newWidth && signaturePad.height === newHeight) {
+    return;
+  }
+
+  let savedSignature = null;
+  if (isSigned) {
+    savedSignature = signaturePad.toDataURL();
+  }
+
+  signaturePad.width = newWidth;
+  signaturePad.height = newHeight;
   ctx = signaturePad.getContext("2d");
   ctx.scale(dpr, dpr);
   ctx.lineWidth = 2.2;
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
   ctx.strokeStyle = "#333";
-  clearCanvas();
+
+  if (savedSignature) {
+    const img = new Image();
+    img.onload = () => {
+      ctx.drawImage(img, 0, 0, rect.width, rect.height);
+    };
+    img.src = savedSignature;
+  } else {
+    clearCanvas();
+  }
 };
 
 const clearCanvas = () => {

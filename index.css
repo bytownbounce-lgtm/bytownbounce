@@ -387,7 +387,7 @@ header.scrolled .nav-logo.nav-logo-center {
 .price span {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--pink)
+  color: var(--pink);
   opacity: 0.85;
   margin-left: 6px;
 }
@@ -773,27 +773,49 @@ footer {
   color: #bbb;
 }
 .nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
+  background: #ffed4e;
+  color: #333;
   border: none;
   font-size: 30px;
   padding: 20px;
   cursor: pointer;
   border-radius: 4px;
   transition: background 0.3s;
-  z-index: 2001;
+  pointer-events: auto;
 }
 .nav-btn:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: #e6d546;
 }
-.prev {
-  left: 20px;
+
+.modal-nav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  padding: 0 20px;
+  pointer-events: none;
+  z-index: 2001;
 }
-.next {
-  right: 20px;
+
+@media (max-width: 768px) {
+  .modal {
+    flex-direction: column;
+  }
+  .modal-nav {
+    position: static;
+    transform: none;
+    margin-top: 15px;
+    justify-content: center;
+    gap: 40px;
+    width: auto;
+    padding: 0;
+  }
+  .modal-content {
+    max-height: 70vh;
+  }
 }
 /* Cart Sidebar */
 .cart-sidebar {
